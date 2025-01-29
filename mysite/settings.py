@@ -9,6 +9,31 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+
+# Загружаем переменные окружения из .env файла
+load_dotenv()
+
+# Теперь можно использовать переменные окружения
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+
+import os
+import dj_database_url
+
+# Загружаем переменные из .env файла
+load_dotenv()
+
+# Настроим базу данных с использованием переменной DATABASE_URL
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,  # Настройка для длительного подключения
+        ssl_require=True    # Если используется SSL, например, для Heroku или Railway
+    )
+}
 
 from pathlib import Path
 
@@ -25,7 +50,7 @@ SECRET_KEY = 'django-insecure-%batbg7yy8tnzx9hx&-qdp(7qg!!kxp46fk=)n3on0=*(&p_17
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite-2ykd.onrender.com']
 
 
 # Application definition
