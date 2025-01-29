@@ -35,7 +35,9 @@ footer {
 }
 
 .image-container {
-    width: 100%; /* Обеспечиваем, что контейнер всегда на 100% ширины */
+    width: 100%;
+    max-width: 100%; /* Чтобы не выходило за пределы родительского контейнера */
+    height: auto; /* Если нужно, чтобы высота менялась пропорционально */
     overflow: hidden;
 }
 
@@ -44,7 +46,7 @@ footer {
     height: auto;
     display: block;
     margin: 0 auto; /* Центрируем изображение */
-    object-fit: contain; /* Чтобы изображение подгонялось без искажения */
+    object-fit: contain; /* Или 'cover', в зависимости от требований */
 }
 
 body {
