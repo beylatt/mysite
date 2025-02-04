@@ -10,47 +10,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+import dj_database_url
 from dotenv import load_dotenv
+from pathlib import Path  # Добавьте этот импорт
 
+# Путь к базовой директории проекта
+BASE_DIR = Path(__file__).resolve().parent.parent
 # Загружаем переменные окружения из .env файла
 load_dotenv()
 
-# Теперь можно использовать переменные окружения
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+# Используем dj_database_url для получения данных из DATABASE_URL (если у вас есть эта переменная в .env)
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=os.getenv('DATABASE_URL')  # DATABASE_URL в .env
+#    )
+#}
 
-import os
-import dj_database_url
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-secret-key')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Преобразуем строку в булевый тип
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-# Загружаем переменные из .env файла
-load_dotenv()
-
-# Настроим базу данных с использованием переменной DATABASE_URL
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600,  # Настройка для длительного подключения
-        ssl_require=True    # Если используется SSL, например, для Heroku или Railway
-    )
-}
-
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%batbg7yy8tnzx9hx&-qdp(7qg!!kxp46fk=)n3on0=*(&p_17'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['mysite-2ykd.onrender.com']
 
 
 # Application definition

@@ -37,15 +37,15 @@ footer {
 .image-container {
     width: 100%;
     max-width: 1200px; /* Чтобы не выходило за пределы родительского контейнера */
-    height: auto; /* Если нужно, чтобы высота менялась пропорционально */
+    height: 0 auto; /* Если нужно, чтобы высота менялась пропорционально */
     overflow: hidden;
 }
 
 .image-container img {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto; /* Центрируем изображение */
     object-fit: contain; /* Или 'cover', в зависимости от требований */
 }
 
