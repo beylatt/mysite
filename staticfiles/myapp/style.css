@@ -1,0 +1,68 @@
+/* Убираем все отступы и границы для всех элементов */
+* {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Это поможет нам точно контролировать размеры */
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Блокируем горизонтальную прокрутку */
+    overflow-y: auto;   /* Вертикальная прокрутка, если нужно */
+}
+
+/* Стандартизируем всё на странице */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f7f0;
+    width: 100%;  /* Весь экран */
+    height: 100%;
+}
+
+header, footer {
+    text-align: center;
+    width: 100%;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 100vw; /* Ограничиваем контейнер шириной окна */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image-container {
+    border: 2px solid red; /* Временная рамка для отладки */
+    background: lightgray; /* Видимый фон */
+}
+
+.image-container img {
+    width: 100%; /* Подгоняем под контейнер */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+body {
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+}
+
+header, footer, .image-container {
+    position: relative;
+    width: 100%;
+}
