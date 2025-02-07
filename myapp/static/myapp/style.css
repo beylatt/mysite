@@ -28,6 +28,7 @@ body {
 }
 
 header, footer {
+    background-color: #333;
     text-align: center;
     width: 100%;
 }
@@ -45,10 +46,7 @@ footer {
     overflow: hidden;
 }
 
-.image-container {
-    border: 2px solid red; /* Временная рамка для отладки */
-    background: lightgray; /* Видимый фон */
-}
+
 
 .image-container img {
     width: 100%; /* Подгоняем под контейнер */
