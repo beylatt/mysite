@@ -20,8 +20,9 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     return render(request, 'myapp/product_detail.html', {'product': product})
 
-from django.utils.timezone import now
+from django.utils import timezone
 from django.shortcuts import render
 
 def my_view(request):
-    return render(request, 'myapp/home.html', {'timestamp': int(now().timestamp())})
+    timestamp = int(timezone.now().timestamp())
+    return render(request, 'myapp/home.html', {'timestamp': timestamp})

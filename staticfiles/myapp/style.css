@@ -28,9 +28,10 @@ body {
 }
 
 header, footer {
+    background-color: #333;
     text-align: center;
     width: 100%;
-    background-color: #333;
+    color: white;
 }
 
 footer {
@@ -45,6 +46,7 @@ footer {
     margin: 0 auto;
     overflow: hidden;
 }
+
 
 
 .image-container img {
