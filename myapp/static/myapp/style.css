@@ -85,29 +85,42 @@ a:any-link {
     color: inherit !important;
 }
 
+/* Убираем подчеркивание и преобразуем ссылку в кнопку */
 .nav a {
-    text-decoration: none; /* Убираем подчеркивание из ссылок */
+    text-decoration: none;
 }
 
 .nav button {
-    background-color: #333;
-    color: white;
+    background-color: #007bff; /* Основной цвет */
+    color: white; /* Белый текст */
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
+    font-weight: bold; /* Сделаем текст жирным */
+    border-radius: 30px; /* Скругление углов */
     cursor: pointer;
-    border-radius: 5px; /* Скругленные углы */
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out; /* Плавные переходы */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Легкая тень для кнопки */
+    text-transform: uppercase; /* Преобразуем текст в верхний регистр */
+    letter-spacing: 1px; /* Увеличиваем расстояние между буквами */
 }
 
+/* Эффект при наведении */
 .nav button:hover {
-    background-color: #555; /* Цвет кнопки при наведении */
+    background-color: #0056b3; /* Цвет кнопки при наведении */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5); /* Увеличиваем тень */
+    transform: translateY(-2px); /* Легкое поднятие кнопки */
 }
 
-.nav button:focus {
-    outline: none; /* Убираем контур при фокусе */
-}
-
+/* Эффект при нажатии */
 .nav button:active {
-    background-color: #222;
+    background-color: #004085; /* Цвет кнопки при нажатии */
+    transform: translateY(1px); /* Немного опускаем кнопку */
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Уменьшаем тень */
+}
+
+/* Фокус на кнопке */
+.nav button:focus {
+    outline: none; /* Убираем стандартный контур */
+    box-shadow: 0 0 0 4px rgba(38, 143, 255, 0.5); /* Добавляем обводку */
 }
