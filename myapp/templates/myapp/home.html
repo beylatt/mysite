@@ -15,14 +15,13 @@
 </head>
 </head>
 <body>
-    <p>Текущий timestamp: {{ timestamp }}</p>
     <header id="header">
         <h1>Путь К Себе</h1>
-        <nav>
-            <a href="#about">О нас и о вас</a>
-            <a href="#services">Услуги</a>
-            <a href="#contact">Контакты</a>
-            <a href="{% url 'product_list' %}">Посмотреть продукты</a>
+        <nav id="nav">
+            <a href="#about">О нас</a>
+            <a href="#services">Философия</a>
+            <a href="#contact">Психология</a>
+            <a href="{% url 'product_list' %}">Социология</a>
         </nav>
     </header>
 
