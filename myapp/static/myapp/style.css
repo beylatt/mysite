@@ -80,3 +80,7 @@ header, footer, .image-container {
 .nav a:hover {
     text-decoration: underline;
 }
+
+a:any-link {
+    color: inherit !important;
+}
