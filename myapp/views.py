@@ -23,6 +23,6 @@ def product_detail(request, product_id):
 from django.utils import timezone
 from django.shortcuts import render
 
-def my_view(request):
+def home(request):
     timestamp = int(timezone.now().timestamp())
-    return render(request, 'home.html', {'timestamp': timestamp})
+    return render(request, 'myapp/home.html', {'timestamp': timestamp})
