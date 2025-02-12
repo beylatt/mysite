@@ -79,7 +79,6 @@ header, footer, .image-container {
 }
 
 .nav button {
-    all: unset;
     background-color: #007bff; /* Основной цвет */
     color: white; /* Белый текст */
     border: none;
@@ -96,7 +95,6 @@ header, footer, .image-container {
 
 /* Эффект при наведении */
 .nav button:hover {
-    all: unset;
     background-color: #0056b3; /* Цвет кнопки при наведении */
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5); /* Увеличиваем тень */
     transform: translateY(-2px); /* Легкое поднятие кнопки */
@@ -104,7 +102,6 @@ header, footer, .image-container {
 
 /* Эффект при нажатии */
 .nav button:active {
-    all: unset;
     background-color: #004085; /* Цвет кнопки при нажатии */
     transform: translateY(1px); /* Немного опускаем кнопку */
     box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Уменьшаем тень */
@@ -112,7 +109,6 @@ header, footer, .image-container {
 
 /* Фокус на кнопке */
 .nav button:focus {
-    all: unset;
     outline: none; /* Убираем стандартный контур */
     box-shadow: 0 0 0 4px rgba(38, 143, 255, 0.5); /* Добавляем обводку */
 }
