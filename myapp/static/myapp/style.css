@@ -71,26 +71,14 @@ header, footer, .image-container {
     padding: 10px;
 }
 
-.nav a {
-    color: white !important;
-    text-decoration: none;
-    margin: 10px;
-}
 
-.nav a:hover {
-    text-decoration: underline;
-}
-
-a:any-link {
-    color: inherit !important;
-}
 
 /* Убираем подчеркивание и преобразуем ссылку в кнопку */
-.nav a {
+.nav {
     text-decoration: none;
 }
 
-#nav a .nav button {
+.nav button {
     all: unset;
     background-color: #007bff; /* Основной цвет */
     color: white; /* Белый текст */
@@ -107,7 +95,7 @@ a:any-link {
 }
 
 /* Эффект при наведении */
-#nav a .nav button:hover {
+.nav button:hover {
     all: unset;
     background-color: #0056b3; /* Цвет кнопки при наведении */
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5); /* Увеличиваем тень */
@@ -115,7 +103,7 @@ a:any-link {
 }
 
 /* Эффект при нажатии */
-#nav a .nav button:active {
+.nav button:active {
     all: unset;
     background-color: #004085; /* Цвет кнопки при нажатии */
     transform: translateY(1px); /* Немного опускаем кнопку */
@@ -123,7 +111,7 @@ a:any-link {
 }
 
 /* Фокус на кнопке */
-#nav a .nav button:focus {
+.nav button:focus {
     all: unset;
     outline: none; /* Убираем стандартный контур */
     box-shadow: 0 0 0 4px rgba(38, 143, 255, 0.5); /* Добавляем обводку */

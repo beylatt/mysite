@@ -18,10 +18,10 @@
     <header id="header">
         <h1>Путь К Себе</h1>
         <nav id="nav">
-            <a href="#about"><button class="nav-button">О нас</button></a>
-            <a href="#services"><button class="nav-button">Философия</button></a>
-            <a href="#contact"><button class="nav-button">Психология</button></a>
-            <a href="{% url 'product_list' %}"><button class="nav-button">Социология</button></a>
+            <button class="nav-button" onclick="location.href='#about'">О нас</button>
+            <button class="nav-button" onclick="location.href='#services'">Философия</button>
+            <button class="nav-button" onclick="location.href='#contact'">Психология</button>
+            <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
         </nav>
     </header>
 
