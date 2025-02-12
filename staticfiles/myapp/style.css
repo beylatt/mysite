@@ -112,3 +112,23 @@ header, footer, .image-container {
     outline: none; /* Убираем стандартный контур */
     box-shadow: 0 0 0 4px rgba(38, 143, 255, 0.5); /* Добавляем обводку */
 }
+
+#nav {
+    display: flex;
+    align-items: center;  /* Выровняет элементы по вертикали */
+    justify-content: space-between; /* Заголовок слева, кнопки справа */
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+#nav h1 {
+    margin: 0; /* Убираем отступы у заголовка */
+    font-size: 24px;
+    color: white;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px; /* Расстояние между кнопками */
+}
