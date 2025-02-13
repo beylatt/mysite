@@ -116,19 +116,25 @@ header, footer, .image-container {
 #nav {
     display: flex;
     align-items: center;  /* Выровняет элементы по вертикали */
-    justify-content: center; /* Заголовок слева, кнопки справа */
+    justify-content: center; /* Центрируем всё содержимое */
     padding: 10px 20px;
     background-color: #333;
     color: white;
+    position: relative; /* Для доп. контроля */
 }
 
 #nav h1 {
     margin: 0; /* Убираем отступы у заголовка */
     font-size: 24px;
     color: white;
+    flex: 1; /* Занимает всю доступную ширину слева */
 }
 
 .nav-buttons {
     display: flex;
     gap: 10px; /* Расстояние между кнопками */
+}
+
+.spacer {
+    flex: 1; /* Добавляет пустое пространство справа */
 }
