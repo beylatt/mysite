@@ -116,7 +116,7 @@ header, footer, .image-container {
 #nav {
     display: flex;
     align-items: center;  /* Выровняет элементы по вертикали */
-    justify-content: space-between; /* Заголовок слева, кнопки справа */
+    justify-content: center; /* Заголовок слева, кнопки справа */
     padding: 10px 20px;
     background-color: #333;
     color: white;
