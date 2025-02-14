@@ -20,44 +20,21 @@
             <h1 style="text-align: left;">Путь К Себе</h1>
             <div class="nav-buttons">
                 <button class="nav-button" onclick="location.href='#about'">О нас</button>
-                <button class="nav-button" onclick="location.href='#services'">Философия</button>
+                <button class="nav-button" onclick="location.href='#phylosophy'">Философия</button>
                 <button class="nav-button" onclick="location.href='#contact'">Психология</button>
                 <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
+                <button class="nav-button exit-button" onclick="location.href='https://google.com'">Иллюзия</button>
             </div>
         </nav>
     </header>
 
-    <div style="text-align: center;">
-        <button class="btn-green" id="greenBtn">Зелёный фон</button>
-        <button class="btn-blue" id="blueBtn">Синий фон</button>
-        <input type="color" id="colorPicker">
-    </div>
-
     <main>
         <section id="about">
             <div style="text-align: center;">
-                <h2>О нас</h2>
                 <p>Параллельные миры, их теоретическое обоснование, популярная культура, мифология и научные исследования.</p>
+                <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
             </div>
         </section>
-
-        <section id="services">
-            <article>
-                <div style="text-align: center;">
-                    <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
-                </div>
-            </article>
-        </section>
-
-        <aside>
-            <div style="text-align: center;">
-                <h3>Полезные ссылки</h3>
-                <ul>
-                    <li><a href="#link1">Справка</a></li>
-                    <li><a href="#link2">Контакты</a></li>
-                </ul>
-            </div>
-        </aside>
 
 
     </main>
@@ -97,24 +74,6 @@
     <!-- Вставка JavaScript кода непосредственно в HTML -->
     <script>
         const header = document.getElementById("header");
-        const greenButton = document.getElementById("greenBtn");
-        const blueButton = document.getElementById("blueBtn");
-        const colorPicker = document.getElementById("colorPicker");
-
-        // Обработчик для зелёной кнопки
-        greenButton.addEventListener("click", function () {
-            header.style.backgroundColor = "lightgreen";
-        });
-
-        // Обработчик для синей кнопки
-        blueButton.addEventListener("click", function () {
-            header.style.backgroundColor = "lightblue";
-        });
-
-        // Обработчик для цветового picker
-        colorPicker.addEventListener("input", function () {
-            header.style.backgroundColor = colorPicker.value;
-        });
 
         const fields = {
             username: "Введите имя пользователя",
