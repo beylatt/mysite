@@ -78,42 +78,40 @@ header, footer, .image-container {
     text-decoration: none;
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-/* Красные кнопки */
 .nav-button {
-    background-color: #cc0000; /* Красный цвет */
+    background-color: red; /* Красный цвет для кнопок */
     color: white;
-    border: 2px solid transparent; /* Прозрачная граница */
+    border: none;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 30px;
     cursor: pointer;
-    transition: border 0.3s ease-in-out; /* Плавный эффект для обводки */
-    box-shadow: 0 4px 8px rgba(204, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Убираем эффект изменения цвета при наведении */
+/* Эффект только при наведении */
 .nav-button:hover {
-    border: 2px solid white; /* Белая обводка при наведении */
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); /* Красная тень */
+    transform: translateY(-2px); /* Поднятие */
 }
 
-/* Кнопка "Иллюзия" */
-.exit-button {
-    background-color: black;
-    color: white;
+/* Голубая тень для последней кнопки */
+.nav-button:last-child:hover {
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* Голубая тень */
 }
 
-/* Обводка при наведении на "Иллюзию" */
-.exit-button:hover {
-    border: 2px solid white;
+/* Обводка только при наведении */
+.nav-button:focus {
+    outline: none;
 }
+
+.nav-button:hover:focus {
+    outline: 3px solid white; /* Белая обводка */
+}
+
 
 #nav {
     display: flex;
