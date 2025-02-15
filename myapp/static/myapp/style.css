@@ -156,6 +156,7 @@ header, footer, .image-container {
         backdrop-filter: blur(5px);
         padding: 20px;
         transition: transform 0.3s ease-in-out;
+        z-index: 1000;
     }
 
     .menu-overlay.menu-open {
@@ -221,72 +222,3 @@ header, footer, .image-container {
     gap: 10px;
 }
 
-/* Скрываем бургер-кнопку на ПК */
-.burger-menu {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-}
-
-/* Стили для мобильного меню */
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон */
-    z-index: 1000;
-    text-align: center;
-    padding-top: 50px;
-}
-
-/* Контейнер для ссылок в мобильном меню */
-.menu-overlay ul {
-    list-style: none;
-    padding: 0;
-}
-
-.menu-overlay ul li {
-    margin: 20px 0;
-}
-
-.menu-overlay ul li a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-/* Кнопка закрытия меню */
-.close-menu {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-/* Показываем меню при активации */
-.menu-overlay.active {
-    display: block;
-}
-
-/* Медиа-запрос для мобильных устройств */
-@media (max-width: 768px) {
-    .desktop-menu {
-        display: none; /* Скрываем обычное меню */
-    }
-    .burger-menu {
-        display: block; /* Показываем бургер-кнопку */
-    }
-}
