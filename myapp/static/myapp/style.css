@@ -119,6 +119,25 @@ header, footer, .image-container {
     outline: 3px solid white; /* Белая обводка */
 }
 
+@media screen and (max-width: 768px) {
+    .nav-buttons {
+        flex-wrap: nowrap; /* Не переносим кнопки */
+        justify-content: space-between; /* Равномерное распределение */
+    }
+
+    .nav-button {
+        padding: 6px 10px; /* Уменьшаем внутренние отступы */
+        font-size: 12px; /* Уменьшаем размер текста */
+        border-radius: 20px; /* Немного меньше скругление */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-button {
+        padding: 4px 8px; /* Еще меньше отступы */
+        font-size: 10px; /* Меньше размер шрифта */
+    }
+}
 
 #nav {
     display: flex;
