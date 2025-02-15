@@ -18,16 +18,25 @@
     <header id="header">
         <nav id="nav">
             <h1 style="text-align: left;">Путь К Себе</h1>
+            <!-- Обычное меню для ПК -->
+            <div class="desktop-menu">
+                <button class="nav-button" onclick="location.href='#about'">О нас</button>
+                <button class="nav-button" onclick="location.href='#services'">Философия</button>
+                <button class="nav-button" onclick="location.href='#contact'">Психология</button>
+                <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
+                <button class="nav-button logout-btn">Иллюзия</button>
+            </div>
+            <!-- Бургер-меню для мобильных -->
             <button class="burger-menu" onclick="toggleMenu()">☰</button>
-            <div class="nav-buttons">
-                <div class="menu-overlay" id="menu">
-                    <button class="close-menu" onclick="toggleMenu()">✖</button>
-                    <ul>
-                       <li><button class="nav-button" onclick="location.href='#about'">О нас</button>
-                       <li><button class="nav-button" onclick="location.href='#phylosophy'">Философия</button>
-                       <li><button class="nav-button" onclick="location.href='#contact'">Психология</button>
-                       <li><button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
-                <button class="nav-button exit-button" onclick="location.href='https://google.com'">Иллюзия</button>
+            <div class="menu-overlay" id="menu">
+                <button class="close-menu" onclick="toggleMenu()">✖</button>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Философия</a></li>
+                    <li><a href="#contact">Психология</a></li>
+                    <li><a href="{% url 'product_list' %}">Социология</a></li>
+                    <li><a href="#" class="logout-btn">Иллюзия</a></li>
+                </ul>
             </div>
         </nav>
     </header>
