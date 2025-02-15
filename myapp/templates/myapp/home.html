@@ -18,11 +18,15 @@
     <header id="header">
         <nav id="nav">
             <h1 style="text-align: left;">Путь К Себе</h1>
+            <button class="burger-menu" onclick="toggleMenu()">☰</button>
             <div class="nav-buttons">
-                <button class="nav-button" onclick="location.href='#about'">О нас</button>
-                <button class="nav-button" onclick="location.href='#phylosophy'">Философия</button>
-                <button class="nav-button" onclick="location.href='#contact'">Психология</button>
-                <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
+                <div class="menu-overlay" id="menu">
+                    <button class="close-menu" onclick="toggleMenu()">✖</button>
+                    <ul>
+                       <li><button class="nav-button" onclick="location.href='#about'">О нас</button>
+                       <li><button class="nav-button" onclick="location.href='#phylosophy'">Философия</button>
+                       <li><button class="nav-button" onclick="location.href='#contact'">Психология</button>
+                       <li><button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
                 <button class="nav-button exit-button" onclick="location.href='https://google.com'">Иллюзия</button>
             </div>
         </nav>
@@ -73,6 +77,9 @@
 
     <!-- Вставка JavaScript кода непосредственно в HTML -->
     <script>
+        function toggleMenu() {
+        document.getElementById("menu").classList.toggle("menu-open");
+        }
         const header = document.getElementById("header");
 
         const fields = {
