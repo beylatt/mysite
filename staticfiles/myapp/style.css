@@ -222,3 +222,28 @@ header, footer, .image-container {
     gap: 10px;
 }
 
+.hero {
+    display: flex;
+    align-items: center; /* Центрирует по вертикали */
+    justify-content: center; /* Центрирует по горизонтали */
+    height: 100vh; /* Высота на весь экран */
+    text-align: center;
+}
+
+.hero h1 {
+    position: absolute;
+    top: 10%; /* Вернуть заголовок вверх */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: white;
+}
+
+.pinned {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 2rem;
+    text-align: center;
+}
