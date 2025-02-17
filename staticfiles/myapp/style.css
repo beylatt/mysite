@@ -8,23 +8,16 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Это поможет нам точно контролировать размеры */
+    box-sizing: border-box;
 }
 
 html, body {
     height: 100%;
     width: 100%;
-    overflow-x: hidden; /* Блокируем горизонтальную прокрутку */
-    overflow-y: auto;   /* Вертикальная прокрутка, если нужно */
-}
-
-/* Стандартизируем всё на странице */
-body {
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     background-color: #f9f7f0;
-    width: 100%;  /* Весь экран */
-    height: 100%;
 }
 
 header, footer {
@@ -32,53 +25,25 @@ header, footer {
     text-align: center;
     width: 100%;
     color: white;
-}
-
-footer {
-    background-color: #333;
-    color: white;
     padding: 10px 0;
 }
 
 .image-container {
     width: 100%;
-    max-width: 100vw; /* Ограничиваем контейнер шириной окна */
+    max-width: 100vw;
     margin: 0 auto;
     overflow: hidden;
 }
 
-
-
 .image-container img {
-    width: 100%; /* Подгоняем под контейнер */
+    width: 100%;
     max-width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
 }
 
-body {
-    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
-}
-
-header, footer, .image-container {
-    position: relative;
-    width: 100%;
-}
-
-.nav {
-    background-color: #333;
-    padding: 10px;
-}
-
-
-
-/* Убираем подчеркивание и преобразуем ссылку в кнопку */
-.nav {
-    text-decoration: none;
-}
-
-/* Основные стили */
+/* Навигация */
 #nav {
     display: flex;
     align-items: center;
@@ -87,6 +52,16 @@ header, footer, .image-container {
     background-color: #333;
     color: white;
     position: relative;
+}
+
+#nav h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+    text-align: left;
+    flex-shrink: 0;
+    position: relative;
+    left: auto;
 }
 
 /* Обычное меню для ПК */
@@ -124,127 +99,103 @@ header, footer, .image-container {
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
 }
 
-/* Скрываем бургер-меню на ПК */
-.burger-menu,
-.menu-overlay {
+/* Мобильное меню */
+.burger-menu {
     display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
-/* Мобильная версия */
-@media (max-width: 768px) {
-    .desktop-menu {
-        display: none; /* Скрываем обычное меню */
-    }
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
 
-    .burger-menu {
-        display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
+.menu-overlay.menu-open {
+    display: block;
+}
 
-    .menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 60%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(5px);
-        padding: 20px;
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-    }
+.menu-overlay ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .menu-overlay.menu-open {
-        display: block;
-    }
+.menu-overlay ul li {
+    margin: 20px 0;
+}
 
-    .menu-overlay ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+.menu-overlay a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-    .menu-overlay ul li {
-        margin: 20px 0;
-    }
-
-    .menu-overlay a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-    }
-
-    .close-menu {
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: white;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 /* Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
     #nav {
-        flex-direction: column; /* Меню будет вертикальным на мобильных устройствах */
-        align-items: flex-start; /* Выровнять кнопки по левому краю */
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
-#nav {
-    display: flex;
-    align-items: center;  /* Выравнивание по вертикали */
-    justify-content: space-between; /* Оставляем заголовок слева, кнопки справа */
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    position: relative; /* Для доп. контроля */
-}
-
-#nav h1 {
-    margin: 0; /* Убираем отступы у заголовка */
-    font-size: 24px;
-    color: white;
-    position: absolute;
-    left: 20px; /* Фиксируем заголовок слева */
-    text-align: left; /* Оставляем текст слева */
-    flex-shrink: 0; /* Запрещаем сжиматься */
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
+/* Анимация заголовка h2 при прокрутке */
 .hero {
-    display: flex;
-    align-items: center; /* Центрирует по вертикали */
-    justify-content: center; /* Центрирует по горизонтали */
-    text-align: center;
-}
-
-.hero h1 {
-    position: absolute;
-    top: 10%; /* Вернуть заголовок вверх */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    color: white;
-}
-
-.pinned {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    font-size: 2rem;
     text-align: center;
+    height: 100vh;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scrolled h2 {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+/* Контент, который скрывает заголовок h2 */
+.content-section {
+    height: 100vh;
+    background: white;
 }
