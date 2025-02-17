@@ -226,7 +226,6 @@ header, footer, .image-container {
     display: flex;
     align-items: center; /* Центрирует по вертикали */
     justify-content: center; /* Центрирует по горизонтали */
-    height: 100vh; /* Высота на весь экран */
     text-align: center;
 }
 
