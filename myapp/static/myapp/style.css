@@ -202,7 +202,7 @@ header, footer, .image-container {
 #nav {
     display: flex;
     align-items: center;  /* Выравнивание по вертикали */
-    justify-content: center; /* Центрируем весь контент */
+    justify-content: space-between; /* Оставляем заголовок слева, кнопки справа */
     padding: 10px 20px;
     background-color: #333;
     color: white;
@@ -215,6 +215,8 @@ header, footer, .image-container {
     color: white;
     position: absolute;
     left: 20px; /* Фиксируем заголовок слева */
+    text-align: left; /* Оставляем текст слева */
+    flex-shrink: 0; /* Запрещаем сжиматься */
 }
 
 .nav-buttons {
