@@ -17,7 +17,9 @@
 <body>
     <header id="header">
         <nav id="nav">
-            <h1 style="text-align: left;">Путь К Себе</h1>
+            <div class="hero">
+                <h1 style="text-align: left;">Путь К Себе</h1>
+            </div>
             <!-- Обычное меню для ПК -->
             <div class="desktop-menu">
                 <button class="nav-button" onclick="location.href='#about'">О нас</button>
@@ -40,6 +42,12 @@
             </div>
         </nav>
     </header>
+
+    <section class="trigger">
+    <div class="pinned">
+        <h2>Развитие начинается здесь</h2>
+    </div>
+</section>
 
     <main>
         <section id="about">
@@ -83,12 +91,38 @@
     <footer>
         <p>© 2025 Путь К Себе. Все права защищены.</p>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Вставка JavaScript кода непосредственно в HTML -->
     <script>
+        gsap.to(".image-container img", {
+        scale: 1.5,
+        scrollTrigger: {
+            trigger: ".image-container",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+        }
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".pinned", {
+        scrollTrigger: {
+            trigger: ".trigger",
+            start: "top top",
+            end: "+=100%",
+            pin: true,
+            scrub: 1,
+        },
+        opacity: 1,
+        scale: 1.2,
+        });
+
         function toggleMenu() {
         document.getElementById("menu").classList.toggle("menu-open");
         }
+
         const header = document.getElementById("header");
 
         const fields = {
