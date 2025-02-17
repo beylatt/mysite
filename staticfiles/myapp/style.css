@@ -176,7 +176,6 @@ header, footer {
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh;
 }
 
 .hero h2 {
@@ -198,4 +197,13 @@ header, footer {
 .content-section {
     height: 100vh;
     background: white;
+}
+
+.pinned {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 2rem;
+    text-align: center;
 }
