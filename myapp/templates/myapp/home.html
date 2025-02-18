@@ -45,10 +45,10 @@
 
     <section class="trigger">
     <div class="pinned">
-        <h2>Развитие начинается здесь</h2>
+        <h2 id="fade-title">Развитие начинается здесь</h2>
     </div>
 </section>
-
+<section class="scroll-container">
     <main>
         <section id="about">
             <div style="text-align: center;">
@@ -56,8 +56,6 @@
                 <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
             </div>
         </section>
-
-
     </main>
     <!--Контейнер для изображения -->
     <div class="image-container">
@@ -91,6 +89,7 @@
     <footer>
         <p>© 2025 Путь К Себе. Все права защищены.</p>
     </footer>
+</section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Вставка JavaScript кода непосредственно в HTML -->
@@ -198,6 +197,16 @@
             input.addEventListener("blur", () => {
                 tooltip.style.display = "none";
             });
+        });
+        window.addEventListener("scroll", function () {
+        let title = document.getElementById("fade-title");
+        let scrollPosition = window.scrollY;
+
+        if (scrollPosition > 100) {
+        title.style.opacity = "0";
+        } else {
+        title.style.opacity = "1";
+        }
         });
     </script>
 </body>

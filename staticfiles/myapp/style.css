@@ -206,4 +206,33 @@ header, footer {
     height: 100vh;
     font-size: 2rem;
     text-align: center;
+    position: relative;
+    z-index: 2; /* Поверх контента */
+}
+
+.pinned h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Анимация при прокрутке */
+@media (prefers-reduced-motion: no-preference) {
+    .pinned {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    .scroll-container {
+        position: relative;
+        z-index: 1;
+        background: white;
+        padding: 50px;
+        min-height: 200vh; /* Достаточно высоты для скролла */
+    }
 }
