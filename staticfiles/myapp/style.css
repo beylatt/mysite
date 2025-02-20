@@ -26,8 +26,11 @@ header, footer {
     width: 100%;
     color: white;
     padding: 10px 0;
-    position: relative; /* Не растягиваем на весь экран */
+    position: fixed; /* Не растягиваем на весь экран */
+    top: 0; /* К верхней части страницы */
+    left: 0;
     z-index: 10;
+    box-sizing: border-box; /* Учитываем паддинги в расчете ширины */
 }
 
 header #nav {
@@ -37,6 +40,8 @@ header #nav {
     padding: 10px 20px;
     background-color: #333;
     color: white;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #nav h1 {
