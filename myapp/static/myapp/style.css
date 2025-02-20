@@ -14,8 +14,8 @@
 html, body {
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+    overflow-y: auto; /* Оставляем вертикальный скролл */
     font-family: Arial, sans-serif;
     background-color: #f9f7f0;
 }
@@ -26,8 +26,28 @@ header, footer {
     width: 100%;
     color: white;
     padding: 10px 0;
+    position: relative; /* Не растягиваем на весь экран */
+    z-index: 10;
 }
 
+header #nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+#nav h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+/* Контейнер для изображения */
 .image-container {
     width: 100%;
     max-width: 100vw;
@@ -37,31 +57,9 @@ header, footer {
 
 .image-container img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
-}
-
-/* Навигация */
-#nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    position: relative;
-}
-
-#nav h1 {
-    margin: 0;
-    font-size: 24px;
-    color: white;
-    text-align: left;
-    flex-shrink: 0;
-    position: relative;
-    left: auto;
+    object-fit: cover; /* Лучше подходит для полноэкранных изображений */
 }
 
 /* Обычное меню для ПК */
@@ -170,6 +168,19 @@ header, footer {
     }
 }
 
+/* Структура основной страницы */
+.scroll-container {
+    position: relative;
+    z-index: 1;
+    background: white;
+    padding: 50px;
+    min-height: 100vh; /* Для нормальной прокрутки */
+}
+
+.main-content {
+    padding-top: 60px;
+}
+
 /* Анимация заголовка h2 при прокрутке */
 .hero {
     display: flex;
@@ -179,17 +190,6 @@ header, footer {
     height: 100vh;
 }
 
-.scrolled h2 {
-    opacity: 0;
-    transform: translate(-50%, -100%);
-}
-
-/* Контент, который скрывает заголовок h2 */
-.content-section {
-    height: 100vh;
-    background: white;
-}
-
 .pinned {
     display: flex;
     align-items: center;
@@ -197,33 +197,32 @@ header, footer {
     height: 100vh;
     font-size: 2rem;
     text-align: center;
-    position: relative;
-    z-index: 2; /* Поверх контента */
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: #f9f7f0;
 }
 
 .pinned h2 {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 3rem;
     opacity: 1;
     transition: opacity 0.5s ease-out;
 }
 
-/* Анимация при прокрутке */
+/* Убираем лишний скролл, фиксируем только на нужной секции */
+.scroll-container {
+    padding: 100px 20px;
+    background-color: white;
+    z-index: 1;
+}
+
+h2 {
+    transition: opacity 0.5s ease-out;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .pinned {
         position: sticky;
         top: 0;
-        height: 100vh;
-    }
-
-    .scroll-container {
-        position: relative;
-        z-index: 1;
-        background: white;
-        padding: 50px;
-        min-height: 200vh; /* Достаточно высоты для скролла */
     }
 }
