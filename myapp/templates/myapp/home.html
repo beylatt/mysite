@@ -13,14 +13,12 @@
         }
     </style>
 </head>
-</head>
 <body>
     <header id="header">
         <nav id="nav">
             <div class="hero">
                 <h1 style="text-align: left;">Путь К Себе</h1>
             </div>
-            <!-- Обычное меню для ПК -->
             <div class="desktop-menu">
                 <button class="nav-button" onclick="location.href='#about'">О нас</button>
                 <button class="nav-button" onclick="location.href='#services'">Философия</button>
@@ -28,7 +26,6 @@
                 <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
                 <button class="nav-button logout-btn">Иллюзия</button>
             </div>
-            <!-- Бургер-меню для мобильных -->
             <button class="burger-menu" onclick="toggleMenu()">☰</button>
             <div class="menu-overlay" id="menu">
                 <button class="close-menu" onclick="toggleMenu()">✖</button>
@@ -43,26 +40,31 @@
         </nav>
     </header>
 
+    <!-- Прокручиваемый блок -->
     <section class="trigger">
-    <div class="pinned">
-        <h2 id="fade-title">Развитие начинается здесь</h2>
-    </div>
-</section>
-<section class="scroll-container">
-    <main>
-        <section id="about">
-            <div style="text-align: center;">
-                <p>Параллельные миры, их теоретическое обоснование, популярная культура, мифология и научные исследования.</p>
-                <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
-            </div>
-        </section>
-    </main>
-    <!--Контейнер для изображения -->
-    <div class="image-container">
-        <img src="https://avatars.mds.yandex.net/i?id=d591132eb02316d96772e658afbf4ba7_l-4903388-images-thumbs&n=13" alt="Параллельные миры">
-    </div>
-</section>
+        <div class="pinned">
+            <h2 id="fade-title">Развитие начинается здесь</h2>
+        </div>
+    </section>
 
+    <!-- Контейнер для текста и изображения -->
+    <section class="scroll-container">
+        <main>
+            <section id="about">
+                <div style="text-align: center;">
+                    <p>Параллельные миры, их теоретическое обоснование, популярная культура, мифология и научные исследования.</p>
+                    <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Контейнер для изображения -->
+        <div class="image-container">
+            <img src="https://avatars.mds.yandex.net/i?id=d591132eb02316d96772e658afbf4ba7_l-4903388-images-thumbs&n=13" alt="Параллельные миры">
+        </div>
+    </section>
+
+    <!-- Форма регистрации -->
     <form id="nameForm" action="/submit" method="POST">
         <label for="username">Имя пользователя:</label>
         <input type="text" id="username" name="username" placeholder="Введите имя">
@@ -83,31 +85,30 @@
         </select>
     </form>
 
-    <div class="tooltip" id="tooltip"></div>
-
-    <label><input type="radio" name="gender" value="male"> Мужчина</label>
-    <label><input type="radio" name="gender" value="female"> Женщина</label>
-
     <footer>
         <p>© 2025 Путь К Себе. Все права защищены.</p>
     </footer>
 
+    <!-- Скрипты -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Вставка JavaScript кода непосредственно в HTML -->
+
     <script>
+        // Инициализация GSAP анимаций
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Анимация изображения при прокрутке
         gsap.to(".image-container img", {
-        scale: 1.5,
-        scrollTrigger: {
+            scale: 1.5,
+            scrollTrigger: {
             trigger: ".image-container",
             start: "top bottom",
             end: "bottom top",
             scrub: 1
-        }
+            }
         });
 
-        gsap.registerPlugin(ScrollTrigger);
-
+        // Анимация для закрепленного заголовка при прокрутке
         gsap.to(".pinned", {
         scrollTrigger: {
             trigger: ".trigger",
@@ -115,24 +116,37 @@
             end: "+=100%",
             pin: true,
             scrub: 1,
-        },
-        opacity: 1,
-        scale: 1.2,
+            },
+            opacity: 1,
+            scale: 1.2,
         });
 
+        // Скрипт для открытия/закрытия бургер-меню на мобильных устройствах
         function toggleMenu() {
         document.getElementById("menu").classList.toggle("menu-open");
         }
 
-        const header = document.getElementById("header");
+        // Логика для анимации заголовка при прокрутке страницы
+        window.addEventListener('scroll', function () {
+            const fadeTitle = document.getElementById('fade-title');
+            const scrollPosition = window.scrollY;
 
-        const fields = {
-            username: "Введите имя пользователя",
-            email: "Введите свой email",
-            password: "Пароль должен содержать не менее 6 символов",
-            city: "Выберите город",
-            gender: "Выберите пол"
-        };
+            // Добавляем/удаляем класс "scrolled" для анимации исчезновения заголовка
+            if (scrollPosition > 100) {
+                fadeTitle.classList.add('scrolled');
+            } else {
+                fadeTitle.classList.remove('scrolled');
+            }
+        });
+
+        // Валидация формы при отправке
+    const fields = {
+        username: "Введите имя пользователя",
+        email: "Введите свой email",
+        password: "Пароль должен содержать не менее 6 символов",
+        city: "Выберите город",
+        gender: "Выберите пол"
+    };
 
         const form = document.getElementById("nameForm");
         const usernameInput = document.getElementById("username");
@@ -184,6 +198,7 @@
             }
         });
 
+        // Отображение подсказок при фокусе на полях формы
         document.querySelectorAll("input").forEach((input) => {
             input.addEventListener("focus", (event) => {
                 const fieldName = event.target.id;
@@ -200,16 +215,7 @@
                 tooltip.style.display = "none";
             });
         });
-        window.addEventListener("scroll", function () {
-        let title = document.getElementById("fade-title");
-        let scrollPosition = window.scrollY;
 
-        if (scrollPosition > 100) {
-        title.style.opacity = "0";
-        } else {
-        title.style.opacity = "1";
-        }
-        });
     </script>
 </body>
 </html>
