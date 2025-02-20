@@ -1,8 +1,4 @@
-/* Убираем все отступы и границы для всех элементов */
-* {
-    box-sizing: border-box;
-}
-
+/* Сброс стилей */
 *,
 *::before,
 *::after {
@@ -11,6 +7,7 @@
     box-sizing: border-box;
 }
 
+/* Убираем лишний скролл */
 html, body {
     height: 100%;
     width: 100%;
@@ -20,19 +17,21 @@ html, body {
     background-color: #f9f7f0;
 }
 
-header, footer {
+/* Шапка, фиксированная сверху, только как полоса */
+header {
     background-color: #333;
     text-align: center;
-    width: 100%;
     color: white;
     padding: 10px 0;
-    position: fixed; /* Не растягиваем на весь экран */
-    top: 0; /* К верхней части страницы */
+    position: fixed; /* Фиксированная шапка */
+    top: 0;
     left: 0;
+    width: 100%; /* Занимает всю ширину */
     z-index: 10;
-    box-sizing: border-box; /* Учитываем паддинги в расчете ширины */
+    box-sizing: border-box;
 }
 
+/* Контейнер для меню внутри шапки */
 header #nav {
     display: flex;
     align-items: center;
@@ -40,154 +39,19 @@ header #nav {
     padding: 10px 20px;
     background-color: #333;
     color: white;
-    width: 100%;
-    box-sizing: border-box;
+    width: 100%; /* Чтобы меню не выходило за границы */
 }
 
-#nav h1 {
-    margin: 0;
-    font-size: 24px;
-    color: white;
-    text-align: left;
-    flex-shrink: 0;
-}
-
-/* Контейнер для изображения */
-.image-container {
-    width: 100%;
-    max-width: 100vw;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover; /* Лучше подходит для полноэкранных изображений */
-}
-
-/* Обычное меню для ПК */
-.desktop-menu {
-    display: flex;
-    gap: 10px;
-}
-
-/* Кнопки */
-.nav-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-/* Эффект при наведении */
-.nav-button:hover {
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
-    transform: translateY(-2px);
-}
-
-/* Кнопка "Иллюзия" */
-.logout-btn {
-    background-color: blue;
-}
-
-/* Голубая тень при наведении */
-.logout-btn:hover {
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
-}
-
-/* Мобильное меню */
-.burger-menu {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-.menu-overlay.menu-open {
-    display: block;
-}
-
-.menu-overlay ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu-overlay ul li {
-    margin: 20px 0;
-}
-
-.menu-overlay a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.close-menu {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-/* Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
-    .desktop-menu {
-        display: none;
-    }
-
-    .burger-menu {
-        display: block;
-    }
-
-    #nav {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-/* Структура основной страницы */
+/* Основной контейнер с контентом */
 .scroll-container {
-    position: relative;
-    z-index: 1;
-    background: white;
     padding: 50px;
-    min-height: 100vh; /* Для нормальной прокрутки */
+    margin-top: 80px; /* Место для шапки */
+    min-height: 100vh; /* Высота как экран */
+    background-color: white;
 }
 
-.main-content {
-    padding-top: 60px;
-}
-
-/* Анимация заголовка h2 при прокрутке */
-.hero {
+/* Блоки с заголовками, фиксируемые при прокрутке */
+.hero, .pinned {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,11 +59,8 @@ header #nav {
     height: 100vh;
 }
 
+/* Пиннинг заголовка */
 .pinned {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     font-size: 2rem;
     text-align: center;
     position: sticky;
@@ -214,20 +75,44 @@ header #nav {
     transition: opacity 0.5s ease-out;
 }
 
-/* Убираем лишний скролл, фиксируем только на нужной секции */
-.scroll-container {
-    padding: 100px 20px;
-    background-color: white;
-    z-index: 1;
+/* Контейнер для изображений */
+.image-container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-h2 {
-    transition: opacity 0.5s ease-out;
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .pinned {
-        position: sticky;
-        top: 0;
+/* Стили для футера */
+footer {
+    background-color: #333;
+    text-align: center;
+    width: 100%;
+    color: white;
+    padding: 20px 0;
+    position: relative; /* Футер не фиксированный */
+    z-index: 10;
+}
+
+/* Адаптивное меню для мобильных устройств */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    #nav {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
