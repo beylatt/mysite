@@ -199,6 +199,16 @@
                 tooltip.style.display = "none";
             });
         });
+
+        // Отслеживание прокрутки
+        window.addEventListener('scroll', function () {
+            const hero = document.querySelector('.hero');
+            if (window.scrollY > 100) {
+                hero.classList.add('scrolled');
+            } else {
+                hero.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>

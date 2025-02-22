@@ -1,8 +1,4 @@
-/* Убираем все отступы и границы для всех элементов */
-* {
-    box-sizing: border-box;
-}
-
+/* Сброс отступов и границ */
 *,
 *::before,
 *::after {
@@ -14,8 +10,8 @@
 html, body {
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+    overflow-y: auto; /* Оставляем вертикальный скролл */
     font-family: Arial, sans-serif;
     background-color: #f9f7f0;
 }
@@ -28,6 +24,7 @@ header, footer {
     padding: 10px 0;
 }
 
+/* Для изображения */
 .image-container {
     width: 100%;
     max-width: 100vw;
@@ -60,14 +57,6 @@ header, footer {
     color: white;
     text-align: left;
     flex-shrink: 0;
-    position: relative;
-    left: auto;
-}
-
-/* Обычное меню для ПК */
-.desktop-menu {
-    display: flex;
-    gap: 10px;
 }
 
 /* Кнопки */
@@ -83,20 +72,9 @@ header, footer {
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Эффект при наведении */
 .nav-button:hover {
     box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
     transform: translateY(-2px);
-}
-
-/* Кнопка "Иллюзия" */
-.logout-btn {
-    background-color: blue;
-}
-
-/* Голубая тень при наведении */
-.logout-btn:hover {
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
 }
 
 /* Мобильное меню */
@@ -154,22 +132,6 @@ header, footer {
     right: 10px;
 }
 
-/* Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
-    .desktop-menu {
-        display: none;
-    }
-
-    .burger-menu {
-        display: block;
-    }
-
-    #nav {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
 /* Анимация заголовка h2 при прокрутке */
 .hero {
     display: flex;
@@ -177,6 +139,7 @@ header, footer {
     justify-content: center;
     text-align: center;
     height: 100vh;
+    position: relative;
 }
 
 .hero h2 {
@@ -189,6 +152,7 @@ header, footer {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* Скрытие заголовка h2 при прокрутке */
 .scrolled h2 {
     opacity: 0;
     transform: translate(-50%, -100%);
@@ -207,4 +171,17 @@ header, footer {
     height: 100vh;
     font-size: 2rem;
     text-align: center;
+    position: relative;
+}
+
+/* Скрытие заголовка при прокрутке */
+.hero.scrolled h2 {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+/* Для прокрутки */
+.scrolled {
+    opacity: 0;
+    transform: translateY(-100%);
 }
