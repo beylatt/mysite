@@ -16,12 +16,30 @@ html, body {
     background-color: #f9f7f0;
 }
 
+/* Шапка и футер с одинаковыми стилями */
 header, footer {
     background-color: #333;
     text-align: center;
-    width: 100%;
     color: white;
-    padding: 10px 0;
+    padding: 10px 20px;
+    position: relative; /* Убираем фиксированное позиционирование для футера */
+    z-index: 10;
+}
+
+/* Шапка фиксируется сверху */
+header {
+    position: fixed; /* Фиксируем шапку */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ширина на весь экран */
+    height: 60px; /* Устанавливаем фиксированную высоту */
+}
+
+/* Основной контент (отступ сверху для шапки) */
+.scroll-container {
+    padding: 60px 20px 20px; /* Добавляем отступ сверху для шапки */
+    min-height: 100vh;
+    background-color: white;
 }
 
 /* Для изображения */
@@ -184,4 +202,11 @@ header, footer {
 .scrolled {
     opacity: 0;
     transform: translateY(-100%);
+}
+
+/* Футер — располагается внизу */
+footer {
+    position: relative; /* Футер остаётся внизу */
+    width: 100%;
+    bottom: 0;
 }
