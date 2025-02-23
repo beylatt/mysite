@@ -14,6 +14,8 @@ html, body {
     overflow-y: auto; /* Оставляем вертикальный скролл */
     font-family: Arial, sans-serif;
     background-color: #f9f7f0;
+    margin: 0; /* Убираем отступы у body */
+    padding: 0; /* Убираем паддинги у body */
 }
 
 /* Шапка и футер с одинаковыми стилями
@@ -47,6 +49,7 @@ header {
     width: 100%; /* Ширина на весь экран */
     height: 60px; /* Высота шапки (можно настроить) */
     z-index: 10; /* Чтобы шапка была поверх всех элементов */
+    box-sizing: border-box; /* Учитываем паддинги в ширине */
 }
 
 .scroll-container {
