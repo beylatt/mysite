@@ -14,34 +14,48 @@ html, body {
     overflow-y: auto; /* Оставляем вертикальный скролл */
     font-family: Arial, sans-serif;
     background-color: #f9f7f0;
-    padding-top: 60px; /* Добавляем отступ сверху для шапки */
 }
 
-/* Шапка и футер с одинаковыми стилями */
+/* Шапка и футер с одинаковыми стилями
 header, footer {
     background-color: #333;
     text-align: center;
     color: white;
     padding: 10px 20px;
-    position: relative; /* Убираем фиксированное позиционирование для футера */
+    position: relative; /* Убираем фиксированное позиционирование для футера
     z-index: 10;
-}
+} */
 
-/* Шапка фиксируется сверху */
+/* Шапка фиксируется сверху
 header {
-    position: fixed; /* Фиксируем шапку */
+    position: fixed; /* Фиксируем шапку
     top: 0;
     left: 0;
+    width: 100%; /* Ширина на весь экран
+    height: 60px; /* Устанавливаем фиксированную высоту
+}*/
+
+/* Шапка как полоса сверху */
+header {
+    background-color: #333;
+    text-align: center;
+    color: white;
+    padding: 10px 20px; /* Устанавливаем отступы, чтобы она была полосой */
+    position: fixed; /* Фиксируем шапку */
+    top: 0; /* Приклеиваем к верхней части экрана */
+    left: 0;
     width: 100%; /* Ширина на весь экран */
-    height: 60px; /* Устанавливаем фиксированную высоту */
+    height: 60px; /* Высота шапки (можно настроить) */
+    z-index: 10; /* Чтобы шапка была поверх всех элементов */
 }
 
-/* Основной контент (отступ сверху для шапки) */
 .scroll-container {
-    padding: 60px 20px 20px; /* Добавляем отступ сверху для шапки */
-    min-height: 100vh;
+    padding: 60px 20px; /* Отступ сверху, чтобы не перекрывалась шапкой */
+    min-height: 100vh; /* Высота контейнера как высота экрана */
     background-color: white;
+    margin-top: 60px; /* Место для шапки */
 }
+
 
 /* Для изображения */
 .image-container {
@@ -67,7 +81,8 @@ header {
     padding: 10px 20px;
     background-color: #333;
     color: white;
-    position: relative;
+    width: 100%;
+    position: fixed;
 }
 
 #nav h1 {
@@ -205,9 +220,20 @@ header {
     transform: translateY(-100%);
 }
 
-/* Футер — располагается внизу */
+/* Футер — располагается внизу
 footer {
-    position: relative; /* Футер остаётся внизу */
+    position: relative; /* Футер остаётся внизу
     width: 100%;
     bottom: 0;
+}/*
+
+/* Контент футера */
+footer {
+    background-color: #333;
+    text-align: center;
+    color: white;
+    padding: 10px 20px;
+    position: relative; /* Футер не фиксирован, а остается внизу */
+    z-index: 10;
+    width: 100%;
 }
