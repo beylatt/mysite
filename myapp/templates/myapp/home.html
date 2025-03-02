@@ -18,51 +18,45 @@
     <header id="header">
         <nav id="nav">
             <div class="hero">
-                <h1 style="text-align: left;">Путь К Себе</h1>
+                <h1 style="text-align: left;">COZY</h1>
             </div>
             <!-- Обычное меню для ПК -->
             <div class="desktop-menu">
-                <button class="nav-button" onclick="location.href='#about'">О нас</button>
-                <button class="nav-button" onclick="location.href='#services'">Философия</button>
-                <button class="nav-button" onclick="location.href='#contact'">Психология</button>
-                <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Социология</button>
-                <button class="nav-button logout-btn">Иллюзия</button>
+                <button class="nav-button" onclick="location.href='#about'">Каталог</button>
+                <button class="nav-button" onclick="location.href='#services'">Контакты</button>
+                <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
+                <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Войти</button>
             </div>
             <!-- Бургер-меню для мобильных -->
             <button class="burger-menu" onclick="toggleMenu()">☰</button>
             <div class="menu-overlay" id="menu">
                 <button class="close-menu" onclick="toggleMenu()">✖</button>
                 <ul>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#services">Философия</a></li>
-                    <li><a href="#contact">Психология</a></li>
-                    <li><a href="{% url 'product_list' %}">Социология</a></li>
-                    <li><a href="#" class="logout-btn">Иллюзия</a></li>
+                    <li><a href="#about">Каталог</a></li>
+                    <li><a href="#services">Контакты</a></li>
+                    <li><a href="#contact">Магазины</a></li>
+                    <li><a href="{% url 'product_list' %}">Войти</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <section class="trigger">
-    <div class="pinned">
-        <h2>-Развитие начинается здесь-</h2>
+
+
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="https://source.unsplash.com/600x400/?nature,water" alt="Фото 1">
+            <img src="https://source.unsplash.com/600x400/?nature,forest" alt="Фото 2">
+            <img src="https://source.unsplash.com/600x400/?nature,mountain" alt="Фото 3">
+            <img src="https://source.unsplash.com/600x400/?nature,beach" alt="Фото 4">
+        </div>
+        <div class="gallery-buttons">
+            <button id="prevBtn">&#10094;</button>
+            <button id="nextBtn">&#10095;</button>
+        </div>
     </div>
-</section>
 
-    <main>
-        <section id="about">
-            <div style="text-align: center;">
-                <p>Параллельные миры, их теоретическое обоснование, популярная культура, мифология и научные исследования.</p>
-                <p>Может ли за границей нашего восприятия существовать бесчисленное множество миров?</p>
-            </div>
-        </section>
-
-
-    </main>
-    <!--Контейнер для изображения -->
-    <div class="image-container">
-        <img src="https://avatars.mds.yandex.net/i?id=d591132eb02316d96772e658afbf4ba7_l-4903388-images-thumbs&n=13" alt="Параллельные миры">
-    </div>
     <form id="nameForm" action="/submit" method="POST">
         <label for="username">Имя пользователя:</label>
         <input type="text" id="username" name="username" placeholder="Введите имя">
@@ -209,6 +203,58 @@
                 hero.classList.remove('scrolled');
             }
         });
+
+
+        // Галерея изображений
+        const gallery = document.querySelector('.gallery');
+        const images = document.querySelectorAll('.gallery img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let index = 0;
+        let interval;
+
+        function updateGallery() {
+            gallery.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        function nextImage() {
+            index = (index + 1) % images.length;
+            updateGallery();
+        }
+
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            updateGallery();
+        }
+
+        function startAutoScroll() {
+            interval = setInterval(nextImage, 3000); // Прокрутка каждые 3 секунды
+        }
+
+        function stopAutoScroll() {
+            clearInterval(interval);
+        }
+
+        // Кнопки "вперед" и "назад"
+        nextBtn.addEventListener('click', () => {
+            stopAutoScroll();
+            nextImage();
+            startAutoScroll();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopAutoScroll();
+            prevImage();
+            startAutoScroll();
+        });
+
+        // Остановка автопрокрутки при наведении
+        gallery.addEventListener('mouseenter', stopAutoScroll);
+        gallery.addEventListener('mouseleave', startAutoScroll);
+
+        // Запуск автопрокрутки при загрузке
+        startAutoScroll();
     </script>
 </body>
 </html>

@@ -52,12 +52,6 @@ header {
     box-sizing: border-box; /* Учитываем паддинги в ширине */
 }
 
-.scroll-container {
-    padding: 60px 20px; /* Отступы со всех сторон, но с дополнительным отступом сверху */
-    min-height: 100vh;  /* Высота контейнера как высота экрана */
-    background-color: white;
-}
-
 
 /* Для изображения */
 .image-container {
@@ -80,7 +74,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 30px;
+    padding: 10px 20px;
     background-color: #333;
     color: white;
     width: 100%;
@@ -97,7 +91,7 @@ header {
 
 /* Кнопки */
 .nav-button {
-    background-color: red;
+    background-color: #333;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -168,58 +162,6 @@ header {
     right: 10px;
 }
 
-/* Анимация заголовка h2 при прокрутке */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-}
-
-.hero h2 {
-    font-size: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Скрытие заголовка h2 при прокрутке */
-.scrolled h2 {
-    opacity: 0;
-    transform: translate(-50%, -100%);
-}
-
-/* Контент, который скрывает заголовок h2 */
-.content-section {
-    height: 100vh;
-    background: white;
-}
-
-.pinned {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-size: 2rem;
-    text-align: center;
-    position: relative;
-}
-
-/* Скрытие заголовка при прокрутке */
-.hero.scrolled h2 {
-    opacity: 0;
-    transform: translate(-50%, -100%);
-}
-
-/* Для прокрутки */
-.scrolled {
-    opacity: 0;
-    transform: translateY(-100%);
-}
 
 /* Футер — располагается внизу
 footer {
@@ -238,3 +180,46 @@ footer {
     z-index: 10;
     width: 100%;
 }
+
+        .gallery-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gallery img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Кнопки переключения */
+        .gallery-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .gallery-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        .gallery-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
