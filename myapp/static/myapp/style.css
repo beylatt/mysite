@@ -46,25 +46,13 @@ header {
     top: 0; /* Приклеиваем к верхней части экрана */
     left: 0;
     width: 100%; /* Ширина на весь экран */
+    height: 60px; /* Высота шапки */
+    display: flex;
     box-sizing: border-box; /* Учитываем паддинги в ширине */
+    z-index: 1000; /* Шапка выше галереи */
 }
 
 
-/* Для изображения */
-.image-container {
-    width: 100%;
-    max-width: 100vw;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.image-container img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
 
 /* Навигация */
 #nav {
@@ -179,6 +167,7 @@ footer {
 }
 
         .gallery-container {
+            padding-top: 60px; /* Отступ вниз, равный высоте шапки */
             position: relative;
             width: 100vw;
             height: 500px;
