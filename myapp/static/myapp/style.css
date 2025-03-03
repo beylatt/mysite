@@ -192,7 +192,7 @@ footer {
             transition: opacity 1s ease-in-out;
         }
 
-        .image-container img.active {
+        .gallery img.active {
             opacity: 1;
         }
 
