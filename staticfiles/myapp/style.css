@@ -188,6 +188,12 @@ footer {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Обрезает изображение так, чтобы оно заполняло контейнер */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container img.active {
+            opacity: 1;
         }
 
         /* Кнопки переключения */
