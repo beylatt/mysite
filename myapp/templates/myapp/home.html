@@ -89,36 +89,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Вставка JavaScript кода непосредственно в HTML -->
     <script>
+        // Анимация увеличения изображения при прокрутке с использованием GSAP
+        // Увеличиваем изображение в .image-container при скролле страницы
+
         gsap.to(".image-container img", {
-        scale: 1.5,
-        scrollTrigger: {
-            trigger: ".image-container",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1
-        }
+            scale: 1.5, // Увеличение масштаба изображения в 1.5 раза
+            scrollTrigger: { // Настройки триггера прокрутки
+                trigger: ".image-container", // Определяет элемент, при прокрутке которого запускается анимация
+                start: "top bottom", // Анимация начинается, когда верх элемента касается нижней части экрана
+                end: "bottom top", // Анимация заканчивается, когда нижняя часть элемента касается верхней части экрана
+                scrub: 1 // Плавное изменение эффекта в зависимости от прокрутки
+            }
         });
+
+        // Регистрация плагина ScrollTrigger для GSAP
+        // Этот плагин позволяет привязывать анимацию к прокрутке страницы
 
         gsap.registerPlugin(ScrollTrigger);
 
+        // Анимация закрепленного элемента при прокрутке страницы
+
         gsap.to(".pinned", {
-        scrollTrigger: {
-            trigger: ".trigger",
-            start: "top top",
-            end: "bottom top",
-            pin: true,
-            scrub: 1,
-        },
-        opacity: 1,
-        scale: 1.2,
+            scrollTrigger: {
+                trigger: ".trigger", // Определяет элемент, который активирует анимацию
+                start: "top top", // Анимация начинается, когда верхняя часть элемента достигает верха экрана
+                end: "bottom top", // Анимация заканчивается, когда нижняя часть элемента достигает верха экрана
+                pin: true, // Закрепляет элемент на экране при прокрутке
+                scrub: 1, // Плавное изменение эффекта в зависимости от прокрутки
+            },
+            opacity: 1, // Элемент становится полностью видимым
+            scale: 1.2, // Увеличение размера элемента
         });
 
+        // Функция для переключения меню (открытие/закрытие)
+
         function toggleMenu() {
-        document.getElementById("menu").classList.toggle("menu-open");
+            document.getElementById("menu").classList.toggle("menu-open"); // Добавляет или удаляет класс "menu-open"
         }
 
+        // Получаем заголовок страницы
         const header = document.getElementById("header");
 
+        // Объект с подсказками для полей формы
         const fields = {
             username: "Введите имя пользователя",
             email: "Введите свой email",
@@ -127,6 +139,7 @@
             gender: "Выберите пол"
         };
 
+        // Получаем элементы формы
         const form = document.getElementById("nameForm");
         const usernameInput = document.getElementById("username");
         const emailInput = document.getElementById("email");
@@ -135,30 +148,36 @@
         const genderInputs = document.getElementsByName("gender");
         const tooltip = document.getElementById("tooltip");
 
+        // Обработчик отправки формы
         form.addEventListener("submit", function (event) {
-            let isValid = true;
-            let errorMessage = "";
+            let isValid = true; // Флаг валидности формы
+            let errorMessage = ""; // Строка для сообщений об ошибках
 
+            // Проверка имени пользователя
             if (usernameInput.value.trim() === "") {
-                isValid = false;
-                errorMessage += "Введите имя пользователя.\n";
+                    isValid = false;
+                    errorMessage += "Введите имя пользователя.\n";
             }
 
+            // Проверка email (должен содержать символ '@')
             if (!emailInput.value.includes("@")) {
                 isValid = false;
                 errorMessage += "Введите корректный email.\n";
             }
 
+            // Проверка длины пароля (не менее 6 символов)
             if (passwordInput.value.length < 6) {
                 isValid = false;
                 errorMessage += "Пароль должен содержать не менее 6 символов.\n";
             }
 
+            // Проверка выбора города
             if (citySelect.value === "") {
                 isValid = false;
                 errorMessage += "Выберите город.\n";
             }
 
+            // Проверка выбора пола
             let genderSelected = false;
             for (const gender of genderInputs) {
                 if (gender.checked) {
@@ -171,16 +190,19 @@
                 errorMessage += "Выберите пол.\n";
             }
 
+            // Если форма невалидна, отменяем отправку и выводим сообщение об ошибке
             if (!isValid) {
                 event.preventDefault();
                 alert(errorMessage);
             }
         });
 
+        // Подсказки при фокусе на поле ввода
+
         document.querySelectorAll("input").forEach((input) => {
             input.addEventListener("focus", (event) => {
-                const fieldName = event.target.id;
-                const message = fields[fieldName];
+                const fieldName = event.target.id; // Получаем id активного поля
+                const message = fields[fieldName]; // Получаем соответствующую подсказку
                 if (message) {
                     tooltip.textContent = message;
                     tooltip.style.display = "block";
@@ -190,53 +212,53 @@
             });
 
             input.addEventListener("blur", () => {
-                tooltip.style.display = "none";
+                tooltip.style.display = "none"; // Скрываем подсказку при потере фокуса
             });
         });
 
-        // Отслеживание прокрутки
+        // Анимация при прокрутке страницы
+
         window.addEventListener('scroll', function () {
-            const hero = document.querySelector('.hero');
-            if (window.scrollY > 100) {
-                hero.classList.add('scrolled');
+            const hero = document.querySelector('.hero'); // Получаем элемент с классом hero
+            if (window.scrollY > 100) { // Если прокрутили страницу более чем на 100 пикселей
+                hero.classList.add('scrolled'); // Добавляем класс
             } else {
-                hero.classList.remove('scrolled');
+            hero.classList.remove('scrolled'); // Убираем класс
             }
         });
 
-
         // Галерея изображений
+
         const gallery = document.querySelector('.gallery');
         const images = document.querySelectorAll('.gallery img');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        let index = 0;
-        let interval;
+        let index = 0; // Индекс текущего изображения
+        let interval; // Переменная для интервала автоматической прокрутки
 
         function updateGallery() {
-            gallery.style.transform = `translateX(${-index * 100}%)`;
+            gallery.style.transform = `translateX(${-index * 100}%)`; // Смещаем галерею
         }
 
         function nextImage() {
-            index = (index + 1) % images.length;
+            index = (index + 1) % images.length; // Переход к следующему изображению
             updateGallery();
         }
 
         function prevImage() {
-            index = (index - 1 + images.length) % images.length;
+            index = (index - 1 + images.length) % images.length; // Переход к предыдущему изображению
             updateGallery();
         }
 
         function startAutoScroll() {
-            interval = setInterval(nextImage, 3000); // Прокрутка каждые 3 секунды
+            interval = setInterval(nextImage, 3000); // Автоматическая прокрутка каждые 3 секунды
         }
 
         function stopAutoScroll() {
-            clearInterval(interval);
+            clearInterval(interval); // Остановка автоматической прокрутки
         }
 
-        // Кнопки "вперед" и "назад"
         nextBtn.addEventListener('click', () => {
             stopAutoScroll();
             nextImage();
@@ -249,25 +271,27 @@
             startAutoScroll();
         });
 
-        // Остановка автопрокрутки при наведении
         gallery.addEventListener('mouseenter', stopAutoScroll);
         gallery.addEventListener('mouseleave', startAutoScroll);
 
-        // Запуск автопрокрутки при загрузке
         startAutoScroll();
 
+        document.addEventListener("DOMContentLoaded", () => {
+            let images = document.querySelectorAll(".gallery img"); // Получаем все изображения внутри галереи
+            let currentIndex = 0; // Индекс текущего изображения
+
+            images[currentIndex].classList.add("active"); // Делаем первое изображение активным
+
+            function showNextImage() {
+                images[currentIndex].classList.remove("active"); // Убираем класс "active" у текущего изображения
+                currentIndex = (currentIndex + 1) % images.length; // Увеличиваем индекс, если дошли до конца, начинаем сначала
+                images[currentIndex].classList.add("active"); // Добавляем класс "active" следующему изображению
+            }
+
+            setInterval(showNextImage, 3000); // Запускаем функцию смены изображения каждые 3 секунды
+        });
 
 
-        const images = document.querySelectorAll(".gallery img");
-        let currentIndex = 0;
-
-        function showNextImage() {
-            images[currentIndex].classList.remove("active");
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add("active");
-        }
-
-        setInterval(showNextImage, 3000); // Менять изображение каждые 3 секунды
     </script>
 </body>
 </html>
