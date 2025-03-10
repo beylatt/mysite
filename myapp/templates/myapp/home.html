@@ -229,69 +229,27 @@
 
         // Галерея изображений
 
-        const gallery = document.querySelector('.gallery');
-        const images = document.querySelectorAll('.gallery img');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+       document.addEventListener("DOMContentLoaded", () => {
+           const images = document.querySelectorAll(".gallery img");
+           let currentIndex = 0;
 
-        let index = 0; // Индекс текущего изображения
-        let interval; // Переменная для интервала автоматической прокрутки
+           // Показываем первое изображение
+           images[currentIndex].classList.add("active");
 
-        function updateGallery() {
-            gallery.style.transform = `translateX(${-index * 100}%)`; // Смещаем галерею
-        }
+           function showNextImage() {
+               // Убираем актив у текущего изображения
+               images[currentIndex].classList.remove("active");
 
-        function nextImage() {
-            index = (index + 1) % images.length; // Переход к следующему изображению
-            updateGallery();
-        }
+               // Переходим к следующему индексу
+               currentIndex = (currentIndex + 1) % images.length;
 
-        function prevImage() {
-            index = (index - 1 + images.length) % images.length; // Переход к предыдущему изображению
-            updateGallery();
-        }
+               // Делаем следующее изображение активным
+               images[currentIndex].classList.add("active");
+           }
 
-        function startAutoScroll() {
-            interval = setInterval(nextImage, 3000); // Автоматическая прокрутка каждые 3 секунды
-        }
-
-        function stopAutoScroll() {
-            clearInterval(interval); // Остановка автоматической прокрутки
-        }
-
-        nextBtn.addEventListener('click', () => {
-            stopAutoScroll();
-            nextImage();
-            startAutoScroll();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            stopAutoScroll();
-            prevImage();
-            startAutoScroll();
-        });
-
-        gallery.addEventListener('mouseenter', stopAutoScroll);
-        gallery.addEventListener('mouseleave', startAutoScroll);
-
-        startAutoScroll();
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let images = document.querySelectorAll(".gallery img"); // Получаем все изображения внутри галереи
-            let currentIndex = 0; // Индекс текущего изображения
-
-            images[currentIndex].classList.add("active"); // Делаем первое изображение активным
-
-            function showNextImage() {
-                images[currentIndex].classList.remove("active"); // Убираем класс "active" у текущего изображения
-                currentIndex = (currentIndex + 1) % images.length; // Увеличиваем индекс, если дошли до конца, начинаем сначала
-                images[currentIndex].classList.add("active"); // Добавляем класс "active" следующему изображению
-            }
-
-            setInterval(showNextImage, 3000); // Запускаем функцию смены изображения каждые 3 секунды
-        });
-
-
+           // Автоматически меняем изображение каждые 5 секунд
+           setInterval(showNextImage, 5000);
+}      });
     </script>
 </body>
 </html>
