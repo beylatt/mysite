@@ -51,9 +51,9 @@
             <img src="https://media.pitchfork.com/photos/610ca89185ca78313a4b8bad/2:1/w_2560%2Cc_limit/The%2520Weeknd.jpeg" alt="Фото 3">
             <img src="https://www.kissfm.es/wp-content/uploads/2024/06/417470721_1032707094892273_6781538880501015911_n.jpg" alt="Фото 4">
         </div>
-        <div class="gallery-buttons">
-            <button id="prevBtn">&#10094;</button>
-            <button id="nextBtn">&#10095;</button>
+        <!-- Точки навигации -->
+        <div class="dots-container">
+        <!-- Сами точки будут добавлены JS -->
         </div>
     </div>
 
@@ -130,102 +130,7 @@
         // Получаем заголовок страницы
         const header = document.getElementById("header");
 
-        // Объект с подсказками для полей формы
-        const fields = {
-            username: "Введите имя пользователя",
-            email: "Введите свой email",
-            password: "Пароль должен содержать не менее 6 символов",
-            city: "Выберите город",
-            gender: "Выберите пол"
-        };
 
-        // Получаем элементы формы
-        const form = document.getElementById("nameForm");
-        const usernameInput = document.getElementById("username");
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const citySelect = document.getElementById("city");
-        const genderInputs = document.getElementsByName("gender");
-        const tooltip = document.getElementById("tooltip");
-
-        // Обработчик отправки формы
-        form.addEventListener("submit", function (event) {
-            let isValid = true; // Флаг валидности формы
-            let errorMessage = ""; // Строка для сообщений об ошибках
-
-            // Проверка имени пользователя
-            if (usernameInput.value.trim() === "") {
-                    isValid = false;
-                    errorMessage += "Введите имя пользователя.\n";
-            }
-
-            // Проверка email (должен содержать символ '@')
-            if (!emailInput.value.includes("@")) {
-                isValid = false;
-                errorMessage += "Введите корректный email.\n";
-            }
-
-            // Проверка длины пароля (не менее 6 символов)
-            if (passwordInput.value.length < 6) {
-                isValid = false;
-                errorMessage += "Пароль должен содержать не менее 6 символов.\n";
-            }
-
-            // Проверка выбора города
-            if (citySelect.value === "") {
-                isValid = false;
-                errorMessage += "Выберите город.\n";
-            }
-
-            // Проверка выбора пола
-            let genderSelected = false;
-            for (const gender of genderInputs) {
-                if (gender.checked) {
-                    genderSelected = true;
-                    break;
-                }
-            }
-            if (!genderSelected) {
-                isValid = false;
-                errorMessage += "Выберите пол.\n";
-            }
-
-            // Если форма невалидна, отменяем отправку и выводим сообщение об ошибке
-            if (!isValid) {
-                event.preventDefault();
-                alert(errorMessage);
-            }
-        });
-
-        // Подсказки при фокусе на поле ввода
-
-        document.querySelectorAll("input").forEach((input) => {
-            input.addEventListener("focus", (event) => {
-                const fieldName = event.target.id; // Получаем id активного поля
-                const message = fields[fieldName]; // Получаем соответствующую подсказку
-                if (message) {
-                    tooltip.textContent = message;
-                    tooltip.style.display = "block";
-                    tooltip.style.top = `${event.target.offsetTop + event.target.offsetHeight}px`;
-                    tooltip.style.left = `${event.target.offsetLeft}px`;
-                }
-            });
-
-            input.addEventListener("blur", () => {
-                tooltip.style.display = "none"; // Скрываем подсказку при потере фокуса
-            });
-        });
-
-        // Анимация при прокрутке страницы
-
-        window.addEventListener('scroll', function () {
-            const hero = document.querySelector('.hero'); // Получаем элемент с классом hero
-            if (window.scrollY > 100) { // Если прокрутили страницу более чем на 100 пикселей
-                hero.classList.add('scrolled'); // Добавляем класс
-            } else {
-            hero.classList.remove('scrolled'); // Убираем класс
-            }
-        });
 
         // Галерея изображений
 
@@ -250,6 +155,58 @@
            // Автоматически меняем изображение каждые 5 секунд
            setInterval(showNextImage, 5000);
       });
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".gallery img");
+        const dotsContainer = document.querySelector('.dots-container');
+
+        let currentIndex = 0;
+        let interval;
+
+        // Создаем точки по количеству изображений
+        images.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (idx === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
+
+            // Обработка клика по точке
+            dot.addEventListener('click', () => {
+                stopAutoScroll(); // Останавливаем автопрокрутку
+                showImage(idx);   // Показываем выбранное изображение
+                startAutoScroll();// Возобновляем автопрокрутку
+                });
+            });
+
+            const dots = document.querySelectorAll('.dot');
+
+            function showImage(index) {
+                // Убираем active у всех изображений и точек
+                images.forEach(img => img.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Добавляем active текущему изображению и точке
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                currentIndex = index; // Обновляем текущий индекс
+            }
+
+            function showNextImage() {
+                const nextIndex = (currentIndex + 1) % images.length;
+                showImage(nextIndex);
+            }
+
+            function startAutoScroll() {
+                interval = setInterval(showNextImage, 5000); // Плавная смена каждые 5 сек
+            }
+
+            function stopAutoScroll() {
+                clearInterval(interval);
+            }
+
+            startAutoScroll();
+        });
     </script>
 </body>
 </html>
