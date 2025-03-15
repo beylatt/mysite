@@ -245,3 +245,67 @@ footer {
 .dot.active {
   background-color: #333;
 }
+
+/* Контейнер вокруг кнопки Каталог и выпадающего меню */
+.catalog-container {
+  position: relative; /* Контейнер должен быть relative для позиционирования меню */
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  display: none; /* Скрыто по умолчанию */
+  position: absolute;
+  top: 100%; /* Под кнопкой */
+  left: 0;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Пункты меню */
+.dropdown-item {
+  position: relative;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Текст главного пункта */
+.dropdown-item > span {
+  display: block;
+}
+
+/* Подменю */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* Справа от родительского пункта */
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Показ подменю при наведении */
+.dropdown-item:hover .submenu {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.submenu a:hover {
+  background-color: #eee;
+}

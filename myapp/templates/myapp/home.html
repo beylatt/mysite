@@ -21,8 +21,34 @@
                 <h1 style="text-align: left;">COZY</h1>
             </div>
             <!-- Обычное меню для ПК -->
-            <div class="desktop-menu">
-                <button class="nav-button" onclick="location.href='#about'">Каталог</button>
+                <div class="desktop-menu">
+                    <!-- Каталог с меню -->
+                    <div class="catalog-container">
+                    <button class="nav-button catalog-btn" >Каталог</button>
+                        <!-- Выпадающее меню -->
+                        <div class="dropdown-menu">
+
+                            <!-- Музыка с подменю -->
+                            <div class="dropdown-item">
+                                <span>Музыка</span>
+                                <div class="submenu">
+                                    <a href="#">Жанры</a>
+                                </div>
+                            </div>
+
+                        <!-- Мерч с подменю -->
+                        <div class="dropdown-item">
+                            <span>Мерч</span>
+                            <div class="submenu">
+                                <a href="#">Музыкальное оборудование</a>
+                            </div>
+                        </div>
+
+                        <!-- Прочее -->
+                        <div class="dropdown-item">
+                            <a href="#">Прочее</a>
+                        </div>
+
                 <button class="nav-button" onclick="location.href='#services'">Контакты</button>
                 <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
                 <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Войти</button>
@@ -57,30 +83,6 @@
         </div>
     </div>
 
-    <form id="nameForm" action="/submit" method="POST">
-        <label for="username">Имя пользователя:</label>
-        <input type="text" id="username" name="username" placeholder="Введите имя">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Введите email">
-
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" placeholder="Введите пароль">
-
-        <button type="submit">Зарегистрироваться</button>
-
-        <label for="city">Выберите город:</label>
-        <select id="city" name="city">
-            <option value="moscow">Москва</option>
-            <option value="spb">Санкт-Петербург</option>
-            <option value="kazan">Казань</option>
-        </select>
-    </form>
-
-    <div class="tooltip" id="tooltip"></div>
-
-    <label><input type="radio" name="gender" value="male"> Мужчина</label>
-    <label><input type="radio" name="gender" value="female"> Женщина</label>
 
     <footer>
         <p>© 2025 COZY. Все права защищены.</p>
@@ -206,6 +208,20 @@
             }
 
             startAutoScroll();
+        });
+
+        const catalogBtn = document.querySelector('.catalog-btn');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        catalogBtn.addEventListener('click', () => {
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Закрываем при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (!catalogBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+            }
         });
     </script>
 </body>
