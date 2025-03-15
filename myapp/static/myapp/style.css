@@ -246,66 +246,94 @@ footer {
   background-color: #333;
 }
 
-/* Контейнер вокруг кнопки Каталог и выпадающего меню */
-.catalog-container {
-  position: relative; /* Контейнер должен быть relative для позиционирования меню */
+/* Каталог-кнопка */
+.catalog-btn {
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 /* Выпадающее меню */
 .dropdown-menu {
-  display: none; /* Скрыто по умолчанию */
-  position: absolute;
-  top: 100%; /* Под кнопкой */
-  left: 0;
-  background-color: #fff;
-  min-width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 10px;
+  padding: 20px 0;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: max-height 0.5s ease;
+  overflow: hidden;
 }
 
-/* Пункты меню */
+/* Категория */
 .dropdown-item {
+  display: flex;
+  align-items: center;
   position: relative;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
+  gap: 20px;
 }
 
-.dropdown-item:hover {
-  background-color: #f0f0f0;
+/* Основная картинка и подпись */
+.item-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Текст главного пункта */
-.dropdown-item > span {
-  display: block;
+.item-img-big {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Подменю */
+.item-label {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Подпункты */
 .submenu {
   display: none;
+  flex-direction: column;
+  gap: 10px;
   position: absolute;
+  left: 200px; /* справа от основного */
   top: 0;
-  left: 100%; /* Справа от родительского пункта */
-  background-color: #fff;
-  min-width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  z-index: 1000;
 }
 
-/* Показ подменю при наведении */
+/* При наведении показываем подменю */
 .dropdown-item:hover .submenu {
-  display: block;
+  display: flex;
 }
 
-.submenu a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
+/* Картинки подпунктов */
+.submenu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.submenu a:hover {
-  background-color: #eee;
+.item-img-small {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Анимация плавного появления меню */
+.dropdown-menu.open {
+  display: flex;
+  max-height: 1000px; /* любое большое значение */
+}
+
+.dropdown-menu.closed {
+  display: none;
+  max-height: 0;
 }

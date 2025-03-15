@@ -22,33 +22,50 @@
             </div>
             <!-- Обычное меню для ПК -->
                 <div class="desktop-menu">
-                    <!-- Каталог с меню -->
-                    <div class="catalog-container">
-                    <button class="nav-button catalog-btn" >Каталог</button>
-                        <!-- Выпадающее меню -->
+                    <!-- Кнопка Каталог -->
+                    <button class="nav-button catalog-btn">Каталог</button>
+
+                        <!-- Выпадающее меню Каталога -->
                         <div class="dropdown-menu">
 
-                            <!-- Музыка с подменю -->
+                            <!-- Категория Музыка -->
                             <div class="dropdown-item">
-                                <span>Музыка</span>
+                                <div class="item-main">
+                                    <img src="music-big.jpg" alt="Музыка" class="item-img-big">
+                                    <span class="item-label">Музыка</span>
+                                </div>
+                                <!-- Подпункты -->
                                 <div class="submenu">
-                                    <a href="#">Жанры</a>
+                                    <div class="submenu-item">
+                                        <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
+                                        <span class="item-label">Жанры</span>
+                                    </div>
                                 </div>
                             </div>
 
-                        <!-- Мерч с подменю -->
-                        <div class="dropdown-item">
-                            <span>Мерч</span>
-                            <div class="submenu">
-                                <a href="#">Музыкальное оборудование</a>
+                            <!-- Категория Мерч -->
+                            <div class="dropdown-item">
+                                <div class="item-main">
+                                    <img src="merch-big.jpg" alt="Мерч" class="item-img-big">
+                                    <span class="item-label">Мерч</span>
+                                </div>
+                                <div class="submenu">
+                                    <div class="submenu-item">
+                                        <img src="equip-small.jpg" alt="Музыкальное оборудование" class="item-img-small">
+                                        <span class="item-label">Муз. оборудование</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Прочее -->
-                        <div class="dropdown-item">
-                            <a href="#">Прочее</a>
+                            <!-- Прочее -->
+                            <div class="dropdown-item no-submenu">
+                                <div class="item-main">
+                                    <img src="other-big.jpg" alt="Прочее" class="item-img-big">
+                                    <span class="item-label">Прочее</span>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
 
                 <button class="nav-button" onclick="location.href='#services'">Контакты</button>
                 <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
@@ -215,14 +232,7 @@
         const dropdownMenu = document.querySelector('.dropdown-menu');
 
         catalogBtn.addEventListener('click', () => {
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
-        // Закрываем при клике вне меню
-        document.addEventListener('click', (e) => {
-            if (!catalogBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.style.display = 'none';
-            }
+            dropdownMenu.classList.toggle('open');
         });
     </script>
 </body>
