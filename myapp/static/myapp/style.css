@@ -257,17 +257,22 @@ footer {
   border-radius: 5px;
 }
 
-/* Выпадающее меню */
 .dropdown-menu {
-  display: none;
+  display: flex; /* всегда flex */
   flex-direction: column;
   gap: 20px;
   margin-top: 10px;
-  padding: 20px 0;
+  padding: 0; /* Убираем отступ при закрытии */
   background-color: #f9f9f9;
   border-radius: 10px;
-  transition: max-height 0.5s ease;
+  max-height: 0; /* Закрыто */
   overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.dropdown-menu.open {
+  max-height: 1000px; /* Любое большое значение */
+  padding: 20px 0; /* Показываем отступы при открытии */
 }
 
 /* Категория */

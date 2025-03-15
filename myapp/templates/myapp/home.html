@@ -24,8 +24,25 @@
                 <div class="desktop-menu">
                     <!-- Кнопка Каталог -->
                     <button class="nav-button catalog-btn">Каталог</button>
+                    <button class="nav-button" onclick="location.href='#services'">Контакты</button>
+                    <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
+                    <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Войти</button>
+                </div>
+            <!-- Бургер-меню для мобильных -->
+            <button class="burger-menu" onclick="toggleMenu()">☰</button>
+            <div class="menu-overlay" id="menu">
+                <button class="close-menu" onclick="toggleMenu()">✖</button>
+                <ul>
+                    <li><a href="#about">Каталог</a></li>
+                    <li><a href="#services">Контакты</a></li>
+                    <li><a href="#contact">Магазины</a></li>
+                    <li><a href="{% url 'product_list' %}">Войти</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-                        <!-- Выпадающее меню Каталога -->
+                       <!-- Выпадающее меню Каталога -->
                         <div class="dropdown-menu">
 
                             <!-- Категория Музыка -->
@@ -66,25 +83,6 @@
                             </div>
 
                         </div>
-
-                <button class="nav-button" onclick="location.href='#services'">Контакты</button>
-                <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
-                <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Войти</button>
-            </div>
-            <!-- Бургер-меню для мобильных -->
-            <button class="burger-menu" onclick="toggleMenu()">☰</button>
-            <div class="menu-overlay" id="menu">
-                <button class="close-menu" onclick="toggleMenu()">✖</button>
-                <ul>
-                    <li><a href="#about">Каталог</a></li>
-                    <li><a href="#services">Контакты</a></li>
-                    <li><a href="#contact">Магазины</a></li>
-                    <li><a href="{% url 'product_list' %}">Войти</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
 
 
 
