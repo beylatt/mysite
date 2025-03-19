@@ -257,40 +257,33 @@ footer {
   border-radius: 5px;
 }
 
+/* Основное меню, выводится в строку ниже шапки */
 .dropdown-menu {
-  display: flex; /* всегда flex */
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 10px;
-  padding: 0; /* Убираем отступ при закрытии */
+  display: none;
+  flex-direction: row; /* Главное! Всё в строку */
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  max-height: 0; /* Закрыто */
-  overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease;
+  padding: 20px;
+  margin-top: 60px; /* Чтобы под шапкой */
+  box-sizing: border-box;
 }
 
 .dropdown-menu.open {
-  max-height: 1000px; /* Любое большое значение */
-  padding: 20px 0; /* Показываем отступы при открытии */
-}
-
-/* Категория */
-.dropdown-item {
   display: flex;
-  align-items: center;
-  position: relative;
-  gap: 20px;
 }
 
-/* Основная картинка и подпись */
-.item-main {
+/* Категории (элементы меню) */
+.dropdown-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.item-img-big {
+/* Картинка + название категории */
+.item-main img {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -299,46 +292,44 @@ footer {
 
 .item-label {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
-/* Подпункты */
+/* Подкатегории */
 .submenu {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 180px; /* Сбоку от категории */
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   flex-direction: column;
   gap: 10px;
-  position: absolute;
-  left: 200px; /* справа от основного */
-  top: 0;
+  z-index: 500;
 }
 
-/* При наведении показываем подменю */
 .dropdown-item:hover .submenu {
   display: flex;
 }
 
-/* Картинки подпунктов */
+/* Элементы подкатегорий */
 .submenu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.item-img-small {
+.submenu-item img {
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-/* Анимация плавного появления меню */
-.dropdown-menu.open {
-  display: flex;
-  max-height: 1000px; /* любое большое значение */
-}
-
-.dropdown-menu.closed {
-  display: none;
-  max-height: 0;
+.submenu-label {
+  margin-top: 5px;
+  font-size: 14px;
 }
