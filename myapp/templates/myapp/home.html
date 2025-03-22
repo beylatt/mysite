@@ -55,16 +55,21 @@
                                 <div class="submenu">
                                     <div class="submenu-item">
                                         <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
-                                        <span class="item-label">Жанры</span>
+                                        <span class="submenu-label">Жанры</span>
                                     </div>
+                                </div>
+                                <div class="submenu">
                                     <div class="submenu-item">
                                         <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
-                                        <span class="item-label">Альбомы</span>
+                                        <span class="submenu-label">Альбомы</span>
                                     </div>
+                                </div>
+                                <div class="submenu">
                                     <div class="submenu-item">
                                         <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
-                                        <span class="item-label">Артисты</span>
+                                        <span class="submenu-label">Артисты</span>
                                     </div>
+                                </div>
 
                                 </div>
                             </div>
@@ -87,7 +92,7 @@
                                 <div class="submenu">
                                     <div class="submenu-item">
                                         <img src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-01-1024.png" alt="Музыкальное оборудование" class="item-img-small">
-                                        <span class="item-label">Музыкальное оборудование</span>
+                                        <span class="submenu-label">Музыкальное оборудование</span>
                                     </div>
                                 </div>
                             </div>
@@ -241,6 +246,18 @@
 
         catalogBtn.addEventListener('click', () => {
             dropdownMenu.classList.toggle('open');
+        });
+        // Анимация через GSAP
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item.querySelector('.submenu'), {opacity: 1, x: 0, duration: 0.3});
+            });
+
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item.querySelector('.submenu'), {opacity: 0, x: -10, duration: 0.3});
+            });
         });
     </script>
 </body>
