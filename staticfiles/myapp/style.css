@@ -311,13 +311,13 @@ footer {
   flex-direction: row;
   gap: 10px;
   background-color: #fff;
-  padding: 10px;
+  padding: 0px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
   /* Начальные стили, когда подкатегории скрыты */
   opacity: 0;
-  min-width: 0;  /* ширина 0 => подкатегории не видны */
+  width: 0;  /* ширина 0 => подкатегории не видны */
   overflow: hidden;
   transition: opacity 0.3s ease, width 0.3s ease;
   margin-left: 0;
