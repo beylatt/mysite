@@ -1,6 +1,5 @@
-# yoursite/admin.py
 from django.contrib import admin
-from .models import NewsArticle
+from .models import NewsArticle, Product
 
 admin.site.register(NewsArticle)
-
+admin.site.register(Product)

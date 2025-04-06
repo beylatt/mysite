@@ -19,12 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Загружаем переменные окружения из .env файла
 load_dotenv()
 
-# Используем dj_database_url для получения данных из DATABASE_URL (если у вас есть эта переменная в .env)
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        default=os.getenv('DATABASE_URL')  # DATABASE_URL в .env
-#    )
-#}
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'default-secret-key')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Преобразуем строку в булевый тип
@@ -44,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +116,4 @@ STATICFILES_DIRS = [BASE_DIR / "myapp/static"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
