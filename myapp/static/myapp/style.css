@@ -362,3 +362,60 @@ footer {
     color: inherit;
     display: block;
 }
+
+        .header_product_list {
+            background: #1a1a1a;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+            height: 100px;
+            align-items: center;
+            scrollbar-width: none;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 150px;
+            height: 80px;
+            background: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background: #fff;
+            padding: 1em;
+        }
+        .main-content {
+            flex: 1;
+            padding: 1em;
+        }
+        .filters label, .sort label {
+            display: block;
+            margin: 0.5em 0 0.2em;
+        }
+        .album-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+        }
+        .album {
+            background: white;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }

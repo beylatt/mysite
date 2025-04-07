@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel worlds</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}?v={{ timestamp }}"> <!-- Подключаем CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+</head>
+<body>
+<header id="header">
+        <nav id="nav">
+            <div class="hero">
+                <h1 style="text-align: left;">COZY</h1>
+            </div>
+            <!-- Обычное меню для ПК -->
+                <div class="desktop-menu">
+                    <!-- Кнопка Каталог -->
+                    <button class="nav-button catalog-btn">Каталог</button>
+                    <button class="nav-button" onclick="location.href='#contacts'">Контакты</button>
+                    <button class="nav-button" onclick="location.href='#shops'">Магазины</button>
+                    <button class="nav-button" onclick="location.href='#sing up'">Войти</button>
+                </div>
+            <!-- Бургер-меню для мобильных -->
+            <button class="burger-menu" onclick="toggleMenu()">☰</button>
+            <div class="menu-overlay" id="menu">
+                <button class="close-menu" onclick="toggleMenu()">✖</button>
+                <ul>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="#shops">Магазины</a></li>
+                    <li><a href="#sing up">Войти</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+                       <!-- Выпадающее меню Каталога -->
+                        <div class="dropdown-menu">
+
+                            <!-- Категория Музыка -->
+                            <div class="dropdown-item">
+                                <a href="{% url 'product_list' %}" class="item-link">
+                                    <div class="item-main">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/audio-vol-1b/100/1-41-512.png" alt="Музыка" class="item-img-big">
+                                        <span class="item-label">Музыка</span>
+                                    </div>
+                                </a>
+                                <!-- Подпункты -->
+                                <div class="submenu">
+                                    <div class="submenu-item">
+                                        <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
+                                        <span class="submenu-label">Жанры</span>
+                                    </div>
+                                </div>
+                                <div class="submenu">
+                                    <div class="submenu-item">
+                                        <img src="genre-small.jpg" alt="Альбомы" class="item-img-small">
+                                        <span class="submenu-label">Альбомы</span>
+                                    </div>
+                                </div>
+                                <div class="submenu">
+                                    <div class="submenu-item">
+                                        <img src="genre-small.jpg" alt="Артисты" class="item-img-small">
+                                        <span class="submenu-label">Артисты</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Категория Мерч -->
+                            <div class="dropdown-item">
+                                <div class="item-main">
+                                    <img src="https://avatars.mds.yandex.net/i?id=898491a80b04d3c97e0641954d8a18ff_l-10651277-images-thumbs&n=13" alt="Мерч" class="item-img-big">
+                                    <span class="item-label">Мерч</span>
+                                </div>
+
+                            </div>
+
+                            <!-- Прочее -->
+                            <div class="dropdown-item">
+                                <div class="item-main">
+                                    <img src="https://cdn4.iconfinder.com/data/icons/heavy-lines-20-music-icons/100/19_horns-1024.png" alt="Прочее" class="item-img-big">
+                                    <span class="item-label">Прочее</span>
+                                </div>
+                                <div class="submenu">
+                                    <div class="submenu-item">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-01-1024.png" alt="Музыкальное оборудование" class="item-img-small">
+                                        <span class="submenu-label">Музыкальное оборудование</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
