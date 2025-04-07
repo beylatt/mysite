@@ -2,16 +2,157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список продуктов</title>
+    <title>Каталог музыки</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+            height: 100px;
+            align-items: center;
+            scrollbar-width: none;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 150px;
+            height: 80px;
+            background: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background: #fff;
+            padding: 1em;
+        }
+        .main-content {
+            flex: 1;
+            padding: 1em;
+        }
+        .filters label, .sort label {
+            display: block;
+            margin: 0.5em 0 0.2em;
+        }
+        .album-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+        }
+        .album {
+            background: white;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>Список продуктов</h1>
-    <ul>
-        {% for product in products %}
-            <li>{{ product.name }} - {{ product.price }} ₽</li>
+    <div class="header">
+        <h1>Музыкальный Магазин</h1>
+    </div>
+
+    <h2 style="margin-left: 1em;">Популярные сейчас</h2>
+    <div class="carousel" id="popular-carousel">
+        {% for product in popular_products %}
+            <div class="carousel-item">{{ product.title }}</div>
         {% endfor %}
-    </ul>
-<a href="{% url 'home' %}">Назад на главную</a>
+    </div>
+
+    <h2 style="margin-left: 1em;">Скидки</h2>
+    <div class="carousel" id="discount-carousel">
+        {% for product in discount_products %}
+            <div class="carousel-item">{{ product.title }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="filters">
+                <h3>Фильтры</h3>
+                <form method="get">
+                    <label>Жанр:</label>
+                    <input type="text" name="genre">
+
+                    <label>Исполнитель:</label>
+                    <input type="text" name="artist">
+
+                    <label>Год выпуска:</label>
+                    <input type="number" name="year">
+
+                    <label><input type="checkbox" name="presale"> Пресейл</label>
+                    <label><input type="checkbox" name="discount"> Скидка</label>
+
+                    <button type="submit">Применить</button>
+                </form>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="sort">
+                <form method="get">
+                    <label>Сортировать по:</label>
+                    <select name="sort">
+                        <option value="release_date">Дате выпуска</option>
+                        <option value="price">Цене</option>
+                        <option value="title">Названию</option>
+                    </select>
+                    <button type="submit">Сортировать</button>
+                </form>
+            </div>
+
+            <div class="album-list">
+                {% for product in products %}
+                    <div class="album">
+                        <h3>{{ product.title }}</h3>
+                        <p>{{ product.artist }}</p>
+                        <p>{{ product.genre }}</p>
+                        <p>{{ product.release_date }}</p>
+                        <p>{{ product.price }} ₽</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Простая автопрокрутка каруселей
+        function autoScroll(id) {
+            const el = document.getElementById(id);
+            let scrollAmount = 0;
+            setInterval(() => {
+                el.scrollBy({ left: 1, behavior: 'smooth' });
+                scrollAmount++;
+                if (scrollAmount > 500) {
+                    el.scrollTo({ left: 0 });
+                    scrollAmount = 0;
+                }
+            }, 50);
+        }
+
+        autoScroll('popular-carousel');
+        autoScroll('discount-carousel');
+    </script>
 </body>
 </html>

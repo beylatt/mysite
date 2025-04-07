@@ -24,19 +24,19 @@
                 <div class="desktop-menu">
                     <!-- Кнопка Каталог -->
                     <button class="nav-button catalog-btn">Каталог</button>
-                    <button class="nav-button" onclick="location.href='#services'">Контакты</button>
-                    <button class="nav-button" onclick="location.href='#contact'">Магазины</button>
-                    <button class="nav-button" onclick="location.href='{% url 'product_list' %}'">Войти</button>
+                    <button class="nav-button" onclick="location.href='#contacts'">Контакты</button>
+                    <button class="nav-button" onclick="location.href='#shops'">Магазины</button>
+                    <button class="nav-button" onclick="location.href='#sing up'">Войти</button>
                 </div>
             <!-- Бургер-меню для мобильных -->
             <button class="burger-menu" onclick="toggleMenu()">☰</button>
             <div class="menu-overlay" id="menu">
                 <button class="close-menu" onclick="toggleMenu()">✖</button>
                 <ul>
-                    <li><a href="#about">Каталог</a></li>
-                    <li><a href="#services">Контакты</a></li>
-                    <li><a href="#contact">Магазины</a></li>
-                    <li><a href="{% url 'product_list' %}">Войти</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="#shops">Магазины</a></li>
+                    <li><a href="#sing up">Войти</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,10 +47,12 @@
 
                             <!-- Категория Музыка -->
                             <div class="dropdown-item">
-                                <div class="item-main">
-                                    <img src="https://cdn0.iconfinder.com/data/icons/audio-vol-1b/100/1-41-512.png" alt="Музыка" class="item-img-big">
-                                    <span class="item-label">Музыка</span>
-                                </div>
+                                <a href="{% url 'product_list' %}" class="item-link">
+                                    <div class="item-main">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/audio-vol-1b/100/1-41-512.png" alt="Музыка" class="item-img-big">
+                                        <span class="item-label">Музыка</span>
+                                    </div>
+                                </a>
                                 <!-- Подпункты -->
                                 <div class="submenu">
                                     <div class="submenu-item">
@@ -60,13 +62,13 @@
                                 </div>
                                 <div class="submenu">
                                     <div class="submenu-item">
-                                        <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
+                                        <img src="genre-small.jpg" alt="Альбомы" class="item-img-small">
                                         <span class="submenu-label">Альбомы</span>
                                     </div>
                                 </div>
                                 <div class="submenu">
                                     <div class="submenu-item">
-                                        <img src="genre-small.jpg" alt="Жанры" class="item-img-small">
+                                        <img src="genre-small.jpg" alt="Артисты" class="item-img-small">
                                         <span class="submenu-label">Артисты</span>
                                     </div>
                                 </div>
