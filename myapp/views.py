@@ -6,14 +6,11 @@ def home(request):
     articles = NewsArticle.objects.all()  # Получаем все статьи
     return render(request, 'myapp/home.html', {'articles': articles})
 
-# Список продуктов
-#def product_list(request):
-#    products = Product.objects.all()  # Получаем все продукты
-#    return render(request, 'myapp/product_list.html', {'products': products})
-from django.shortcuts import render
-
+#Список продуктов
 def product_list(request):
-    return render(request, 'myapp/product_list.html')
+    products = Product.objects.all()  # Получаем все продукты
+    return render(request, 'myapp/product_list.html', {'products': products})
+
 
 # Детальная информация о продукте
 def product_detail(request, product_id):
