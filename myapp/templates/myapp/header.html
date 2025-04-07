@@ -13,7 +13,6 @@
         }
     </style>
 </head>
-</head>
 <body>
 <header id="header">
         <nav id="nav">
@@ -98,3 +97,87 @@
                             </div>
 
                         </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Вставка JavaScript кода непосредственно в HTML -->
+    <script>
+        // Функция для переключения меню (открытие/закрытие)
+
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("menu-open"); // Добавляет или удаляет класс "menu-open"
+        }
+
+
+        // Галерея изображений
+        document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".gallery img");
+        const dotsContainer = document.querySelector('.dots-container');
+
+        let currentIndex = 0;
+        let interval;
+
+        // Создаем точки по количеству изображений
+        images.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (idx === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
+
+            // Обработка клика по точке
+            dot.addEventListener('click', () => {
+                stopAutoScroll(); // Останавливаем автопрокрутку
+                showImage(idx);   // Показываем выбранное изображение
+                startAutoScroll();// Возобновляем автопрокрутку
+                });
+            });
+
+            const dots = document.querySelectorAll('.dot');
+
+            function showImage(index) {
+                // Убираем active у всех изображений и точек
+                images.forEach(img => img.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Добавляем active текущему изображению и точке
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                currentIndex = index; // Обновляем текущий индекс
+            }
+
+            function showNextImage() {
+                const nextIndex = (currentIndex + 1) % images.length;
+                showImage(nextIndex);
+            }
+
+            function startAutoScroll() {
+                interval = setInterval(showNextImage, 5000); // Плавная смена каждые 5 сек
+            }
+
+            function stopAutoScroll() {
+                clearInterval(interval);
+            }
+
+            startAutoScroll();
+        });
+
+        const catalogBtn = document.querySelector('.catalog-btn');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        catalogBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('open');
+        });
+        // Анимация через GSAP
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item.querySelector('.submenu'), {opacity: 1, x: 0, duration: 0.3});
+            });
+
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item.querySelector('.submenu'), {opacity: 0, x: -10, duration: 0.3});
+            });
+        });
+    </script>
